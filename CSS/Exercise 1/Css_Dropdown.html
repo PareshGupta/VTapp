@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+     
+    <title>Dropdown Effect</title>
+     
+    <style>
+       
+       #menu{
+       height:37px;
+       padding:0px;
+       margin:0;
+       list-style-type:none;
+       font-size:18px;
+       font-family:Georgia;
+       font-style:italic;
+       }
+    
+       li.main{
+       display:block;
+       position:relative;
+       float:left;
+       border-bottom:1px solid #6d6d6d;
+       }	
+
+       li.main ul#box{
+       display:none;
+       }
+       
+       a.one{
+       display:block;
+       height:37px;
+       text-decoration:none;
+       color:black;
+       padding:0px 20px; 
+       background-color:#CFCFCF;
+       margin-left:2px;
+       white-space:nowrap;
+       vertical-align:middle;
+       line-height:37px;
+       }
+      
+       a.one:hover { color:#8c8c8c; background-color:white; }
+      
+
+		 /* Dropdown box */      
+
+       #box{
+        background-color:white;
+        width:200px;
+        border: 1px solid #6d6d6d;
+        list-style-type:none;
+        padding:10px;
+        
+       }
+    
+       a.two{
+        display:block;
+        text-decoration:none;
+        color:black;
+        font-size:14px;
+        color:black;
+        font-family:Georgia;   
+        border-top:1px solid #cfcfcf;
+        padding:5px 0px;
+        margin-left:1px;
+        white-space:nowrap;
+       }
+  
+       a.two:hover {color:#bd0707;}
+
+       li.main:hover ul#box
+        {	
+    	display: block;
+    	position: absolute;
+	} 
+
+    </style>
+
+  </head>
+  
+  <body>
+	<p>
+           <font size="5"> Example of CSS based drop downs.</font>
+           <font color="red">(Every menu should show its drop-down on hover effect)</font> 
+    	</p>
+
+    	<ul id="menu">
+           <li class="main"><a class=one href="">Home</a></li> 
+           <li class="main"><a class=one href="">About Us</a>
+               <ul Id="box">
+                   <li><a class=two href="" style="border:none;">Example Link 1</a></li>
+                   <li><a class=two href="">Example Link 2</a></li>
+                   <li><a class=two href="">Example Link 3</a></li>
+                   <li><a class=two href="">Example Link 4</a></li>
+               </ul>
+           </li>
+           <li class="main"><a class=one href="">Our Services</a></li>
+           <li class="main"><a class=one href="">Our Portfolio</a></li>
+           <li class="main"><a class=one href="">Contact Us</a></li>
+        </ul> 
+  
+  </body>
+</html>

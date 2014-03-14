@@ -22,28 +22,28 @@
 	  <tr>
 	    <td>Your Name<sup>*</sup>:</td>
 	    <td>
-	       <input type="text" name="name"></input>
+	       <input type="text" name="name">
 	    </td>
 	  </tr>
 					
 	  <tr>	
 	    <td>E-mail Id<sup>*</sup>:</td>
 	    <td>
-	       <input type="text" style="background-color:#FFFF66;" name="email_id"></input> 
+	       <input type="text" style="background-color:#FFFF66;" name="email_id">
        	    </td>
 	  </tr>
 
 	  <tr>
 	    <td>Phone Number:</td>
 	    <td>
-	       <input type="text" name="phone" style="background-color:#FFFF66;" maxlength='10'></input>
+	       <input type="text" name="phone" style="background-color:#FFFF66;" maxlength='10'>
 	    </td>
 	  </tr>
 	  
 	  <tr>
 	    <td>Website<sup>*</sup>:</td>
 	    <td>   
-	       <input type="text" name="website"></input>
+	       <input type="text" name="website">
 	    </td>
 	  </tr>
 
@@ -54,30 +54,33 @@
 	</p>
 	
 	<p><b>Text field</b><br />
-	  Your name:<input type="text" style="background-color:#FFFF66;" name="your name"></input>
+	  Your name:<input type="text" style="background-color:#FFFF66;" name="your name">
 	</p>
 
 	<p><b>Password field</b><br />
-	  Password:<input type="password" name="password"></input>
+	  Password:<input type="password" name="password">
 	</p>
 	
 	<p><b>Radio buttons</b><br />
 	  Do you Like Pizza?<br/>
-	   <input type="radio" name="choice" value="yes" checked="checked">Yes </input><br/>
-	   <input type="radio" name="choice" value="no">No </input><br/>
-	   <input type="radio" name="choice" value="Maybe">Maybe </input><br/>
-	   <input type="radio" name="choice" value="Never Tried">Never Tried </input><br/>
+	   <input type="radio" name="choice" value="yes"  id="yes" checked="checked">
+           <label for="yes">Yes</label><br/>
+	   <input type="radio" name="choice" value="no" id="no">
+           <label for="no">No</label><br/>
+	   <input type="radio" name="choice" value="Maybe" id="maybe">
+           <label for="maybe">Maybe</label><br/>
+	   <input type="radio" name="choice" value="Never Tried" id="never">
+           <label for="never">Never Tried</label>
 	</p>
 		
 	<p><b>Checkbox:</b><br />
-           <input type="checkbox" name="choice" id="checkbox"></input>
+           <input type="checkbox" name="choice" id="checkbox">
            <label for="checkbox">Check this box if you like our service</label>
-	   <br />
 	</p>
 
 	<p><b>Text area</b><br />
-	  Anything you would like to say? <br/>
-	  <textarea rows="5" cols="25"></textarea>
+       	   Anything you would like to say? <br/>
+	   <textarea rows="5" cols="25"></textarea>
 	</p>  
 	
 	<p><b>I Like:</b><br />
@@ -89,6 +92,7 @@
 		<option value="olives">olives</option>
 	   </select>
 	</p>
+
 	<p><b>Menu</b><br />
 	   Your Favorite color: <br/>
 	   <select name="colors">
@@ -100,13 +104,15 @@
         </p>
 
 	<p><b>Attach File:</b> 
-	   <input type="file" name="file upload" value="Browse"></input>
+	   <input type="file" name="file upload" value="Browse">
 	</p>
 
 	<p><b>Buttons:</b><br />
-	   <input type="submit" name="choice" value="Submit"></input>
-	   <input type="reset" name="choice"> </input>
-    </form>
+	   <input type="submit" name="choice" value="Submit">
+	   <input type="reset" name="choice">
+        </p>
+    
+     </form>
    
   </body>
 

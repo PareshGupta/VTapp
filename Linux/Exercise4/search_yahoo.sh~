@@ -1,7 +1,0 @@
-#!/bin/bash
-#searching users with id @yahoo.com
-#copying the list to other file
-
-grep "@yahoo.com" $script_dir/subscribers.txt > $script_dir/yahoo.txt
-
-cat $script_dir/yahoo.txt

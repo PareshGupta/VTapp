@@ -1,7 +1,0 @@
-#!/bin/bash
-#changing version:1.0 to version:2.0 in a 
-
-find ~/ -type d -name project -exec cp -r {} project \; 
-cp -r project/abc/1.0/* project/abc/2.0
-grep -lr "Version:1.0" project/abc/2.0/* | xargs sed -i  "s/Version:1.0/Version:2.0/g"
-

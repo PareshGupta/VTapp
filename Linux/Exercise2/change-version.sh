@@ -4,6 +4,5 @@
 script_dir=$(dirname $0)
 path=$script_dir/project/abc/2.0
 mkdir $path
-cp -ar  $script_dir/project/abc/1.0/* $path
-grep -lr "Version:1.0" $path | xargs sed -i  "s/Version:1.0/Version:2.0/g"
-
+cp -r  $script_dir/project/abc/1.0/* $path
+sed -i "s/Version:1.0/Version:2.0/g" $path/code/*

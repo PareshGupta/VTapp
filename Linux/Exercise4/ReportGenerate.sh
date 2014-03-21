@@ -1,20 +1,18 @@
 #!/bin/bash
 #Report Generation
 
-script_dir=$(dirname $0)
-city_name=("Delhi" "Chennai" "Kolkata" "Mumbai")
-domain_name=("yahoo.com" "gmail.com" "hotmail.com" "rediffmail.com")
+path=$(dirname $0)
+city=("Delhi" "Mumbai" "Kolkata" "Chennai")
+domain=("@yahoo.com" "@gmail.com" "@hotmail.com" "@rediffmail.com")
 
+echo "Details of 100 Users:"
 for i in {0..100}
-do 
-  ran=$[$RANDOM%3]
-  city=${city_name[$ran]}
-  pos=1
-  len=5  	#lenght upto 5 characters
-  str1=$( echo "$RANDOM%10000" )
-  username="${str1:$pos:$len}"
-  ran1=$RANDOM%3
-  hostname=${domain_name[$ran1]}
-  echo "$username@$hostname||$city||$((9876500000 + $RANDOM%1000000000))">> $script_dir/subscribers.txt
+do
+  cityname=${city[$RANDOM%4]}           #generating random city names
+  domainname=${domain[$RANDOM%4]}       #generating randon domain names
+  username=$((19999+RANDOM%29999))      #generating usernames
+  ph_number=$((9871000000+RANDOM%9999999999))     #generating randomly phone numbers
+  echo "$username$domainname ----- $cityname ----- $ph_number" >> $path/subscribers.txt
 done
-cat $script_dir/subscribers.txt
+
+cat $path/subscribers.txt

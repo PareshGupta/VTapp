@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Css Form</title>
+  <style>
+
+    #mail{
+      font-style:tahona;
+      text-align:right;
+      font-size:13px;
+      }
+
+    #heading{
+      font-family:tahoma;
+      font-size:18px;
+      color:#2c286d;
+      }
+
+    ul#form{
+      list-style-type:none;
+      border:1px solid #bcbcbc;
+      background-color:#ececec;
+      width:500px;
+      padding:20px 25px;
+      display:table;
+      }
+
+    ul#form li{
+      display: table-row;
+      }
+
+    p.labels{
+      display:inline;
+      font-family:tahoma;
+      font-size:14px;
+      font-weight:bold;
+      color:black;
+      }
+
+    .inputs{
+      width:350px;
+      height:25px;
+      background-color:white;
+      border-color:#b9b9b9;
+      }
+
+    .sex{
+      display:inline;
+      font-family:tahoma;
+      font-size:13px;
+      color:#6f6f6f;
+      }
+
+    .birth{
+      width:110px;
+      font-family:tahoma;
+      font-size:13px;
+      color:#6f6f6f;
+      background-color:white; 
+      }
+
+    #textbox {
+      background-color:white;
+      border:1px solid #b9b9b9;
+      width:360px;
+      height:135px;
+      vertical-align:top;
+      }
+
+    .button {
+      background-color:#dc2927;
+      border:1px solid #a10200;
+      width:130px;
+      height:32px;
+      text-align:center;
+      font-family:tahoma;
+      font-size:14px;
+      color:white;
+      margin-top:10px;
+      }
+
+    div.align{
+      display: table-cell;
+      float: left;
+      padding-bottom:10px;
+      }
+
+    div.align1{
+      text-align:right;
+      display:table-cell;
+      vertical-align:top;
+      padding-right: 20px;
+      }
+  </style>
+</head>
+<body>
+  <img src="vinsol-logo.png" alt="company logo" >
+  <div id="mail">
+    Email us at:
+    <a href="mailto:sales@vinsol.com?Subject=Hello" target="_top">sales@vinsol.com</a>&nbsp&nbsp
+    Skype:
+    <a href="http://www.vinsol.com" target="_blank">vinsol</a>
+  </div>
+  <hr color="#db2927" size="2px">
+
+  <div style="margin-left:400px;">
+  <p id="heading">Please fill in the Form below</p>
+    <ul id="form">
+      <li>
+        <div class="align1"><p class="labels">First Name</p></div>
+        <div class="align"><input class="inputs" type="text" name="First_name"></div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Last Name</p></div>
+        <div class="align"><input class="inputs" type="text" name="Last_name"></div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Email Address</p></div>
+        <div class="align"><input class="inputs" type="email" name="email_id"></div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Password</p></div>
+        <div class="align"><input class="inputs" type="password" name="password"></div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Gender</p></div>
+        <div class="align">
+          <input type="radio" name="gender" id="one" value="Male" checked="">
+          <div class="sex"><label for="one">Male</label></div>
+          <input type="radio" name="gender" id ="two" value="Female">
+          <div class="sex"><label for="two">Female</label></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Date of Birth</p></div>  
+        <div class="align">
+          <select class=birth name=dob>
+            <option value=date>DD</option>
+          </select>
+          <select class=birth name=dob>
+            <option value=month>MM</option>
+          </select>
+          <select class=birth name=dob>
+            <option value=year>YY</option>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="align1"><p class="labels">Address</p></div>
+        <div class="align">
+          <textarea id="textbox"> </textarea><br/>
+          <input class="button" type="submit" name="submit" value="Submit Details">
+        </div>
+      </li>  
+    </ul>
+  </div>
+</body>

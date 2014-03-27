@@ -1,6 +1,6 @@
 #!/bin/bash
 #select users from Chennai and copying to new file
 
-script_dir=$(dirname $0)
-grep "Chennai" $script_dir/subscribers.txt > $script_dir/chennai.txt
-cat $script_dir/chennai.txt
+current_path=$(dirname $0)
+grep "Chennai" $current_path/subscribers.txt > $current_path/chennai.txt
+cat $current_path/chennai.txt

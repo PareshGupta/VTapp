@@ -26,7 +26,7 @@
       border-right:2px solid white;
       }
 
-    li.main:hover {
+    li.main:hover{
       border:1px solid #6d6d6d;
       border-bottom: none;
       background-color: white;
@@ -39,6 +39,8 @@
     li.main:hover ul.box{
       display: block;
       position: absolute;
+      top: 37px;
+      left: -1px;
       }
     
     a.links:hover{

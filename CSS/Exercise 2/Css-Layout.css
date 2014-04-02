@@ -2,6 +2,7 @@
 body{
   margin:5px;
   padding:0px;
+  font-family:"Tahoma", "arial";
  }
 
 div#header{
@@ -11,8 +12,7 @@ div#header{
   height: 100px;
  }
 
-div#header h1{
-  font-family:tahoma;
+div#header p{
   font-size:24px;
   color:black;
   text-align:center;
@@ -36,15 +36,13 @@ div#side-bar{
   margin:0px;
  }
 
-div#side-bar h1{
-  font:tahoma;
+div#side-bar p#side-heading{
   font-size:18px;
   color:black;
   padding:25px 10px 10px;
  }
 
 div.links{
-  font:tahoma;
   font-size:14px;
   color:white;
   padding-left:10px;
@@ -56,8 +54,7 @@ div.links a{
   text-decoration:none;
  }
 
-div#side-bar p{
-  font-style:tahoma;
+div#side-bar p#side-content{
   font-size:12px;
   color:black;
   padding:10px 10px 25px;
@@ -70,15 +67,13 @@ div#main-page{
   height:100%;
  }
 
-div#main-page h1{
-  font:"Tahoma";
+div#main-page p#heading1{
   font-size:24px;
   color:black;
   padding:20px;
  }
 
-div#main-page p{
-  font-family:tahoma;
+div#main-page p.main-content{
   font-size:14px; 
   color:#802525;
   padding-left:20px;
@@ -92,8 +87,7 @@ div#footer{
   height:100px;
  }
 
-div#footer h1{
-  font-family:tahoma;
+div#footer p{
   font-size:24px;
   color:black;
   text-align: center;

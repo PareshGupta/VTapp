@@ -1,0 +1,122 @@
+header{
+  width:100%;
+  margin-left: auto;
+  margin-right:auto;
+  height:120px;
+  background-color: #b4b4b4;
+  font-family: Arial;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 120px;
+}
+
+nav{
+  width:850px;  
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  background:-webkit-linear-gradient(#2e5e89,#5098da);
+  background:-moz-linear-gradient(#2e5e89,#5098da);
+  background:-o-linear-gradient(#2e5e89,#5098da);
+  vertical-align: middle;
+  line-height: 50px;
+}
+
+ul{
+  list-style-type: none;
+  width:300px;
+  padding-left: 10px;
+}
+
+ul li{
+  display: inline;
+  border-right:1px solid white;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+ul li a{
+  text-decoration: none;
+  font-family: arial;
+  color:white;
+  font-size: 14px;
+}
+
+ul li#last{
+  border-right: none !important;
+}
+
+section{
+  width:850px;
+  height:320px;
+  margin-left: auto;
+  margin-right:auto;
+  border:1px solid #b4b4b4;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+video{
+  float: left; 
+  padding:20px;
+  width:400px;
+  height:240px;
+}
+
+aside{
+  float: left;
+  width: 350px;
+  padding:0px 20px;
+}
+
+aside h2{
+  font-family:arial;
+  font-size: 24px;
+  color: black;
+}
+
+aside div{
+  border:20px solid transparent;
+  border-image: url("border.jpg");
+  border-image-slice: 30;
+  border-image-width:20px 10px 20px 20px ;
+  font-family: arial;
+  font-size: 14px;
+  color:#3f3d3f;
+  padding:5px; 
+  position: relative;
+  top: -20px;
+}
+
+article{
+  width: 850px;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 20px;
+}
+
+p#column{
+  -webkit-column-count:3;
+  -moz-column-count:3;
+  -webkit-column-gap:20px;
+  -moz-column-count:20px;
+}
+
+footer{
+  width: 100%;
+  margin-left: auto;
+  margin-right:auto;
+  height:120px;
+  background-color:black;
+  font-family: arial;
+  font-size: 36px;
+  color:white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 120px;
+}

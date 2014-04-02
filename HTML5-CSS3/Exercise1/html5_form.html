@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML5 form</title>
+  <link rel="stylesheet" type="text/css" href="html5_form.css">
+</head> 
+<body>
+  <header>HTML5 Form</header>
+  <section>
+    <form action="" method="get">
+    <ul>
+      <li>
+      <span class="labels"><label for="fname">First Name:</label></span>
+      <span class="inputs">
+        <input class="info" id="fname" type="text" name="firstname" autofocus required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="lname">Last Name:</label></span>
+      <span class="inputs">
+        <input class="info" id="lname" type="text" name="lastname" required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="email">Email Id:</label></span>
+      <span class="inputs">
+        <input class="info" id="email" type="email" name="email_id" required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="passwd">Password:</label></span>
+      <span class="inputs">
+        <input class="info" id="passwd" type="password" name="password" required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="url">Website:</label></span>
+      <span class="inputs">
+        <input class="info" id="url" type="url" name="website" required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="phone">Phone Number:</label></span>
+      <span class="inputs">
+        <input class="info" id="phone" type="number" name="phone_number" maxlength="10" max="9999999999" required>
+      </span>
+      </li>
+
+      <li>
+      <span class="labels"><label for="birth">Date of Birth:</label></span>
+      <span class="inputs">
+        <input class="info" id="birth" type="date" name="DOB" required><br/>
+        <input type="submit" name="submit" value="Submit Data">
+      </span>
+      </li>
+    </ul>
+    </form>
+  </section>
+</body>
+</html>

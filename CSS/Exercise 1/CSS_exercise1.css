@@ -1,52 +1,63 @@
-ul{
+ul#menu, ul{
   padding:0px;
   margin:0px;
   list-style-type:none;
+  border-bottom:1px solid #6d6d6d;
+  float: left;
 }
 
 ul li.main {
   display:block;
   position:relative;
   float:left;
-  border-bottom:1px solid #6d6d6d;
-  background-color:#CFCFCF;
+  margin: 0 0 0 2px;
+}
+
+#menu li:first-child{
+  margin-left: 0px;
 }
 
 ul li a.mlinks{
+  border-top:1px solid white;
+  border-left:1px solid transparent;
+  border-right:1px solid transparent;
+  width: auto;
   height:37px;
-  display:block;
   text-decoration:none;
   font:italic 18px Georgia;
   color:black;
   vertical-align:middle;
-  line-height:37px;
   padding:0px 20px;
-  border-right:2px solid white;
+  float: left;
+  background-color:#CFCFCF;
+  line-height: 37px;
+  position: relative;
+  z-index:99;
 }
 
-li.main:hover{
-  border-bottom: none;
-  background-color: white;
-}
-
-li.main:hover a.mlinks:first-child{
+li.main:hover a.mlinks{
   color:#8c8c8c;
   border:1px solid #6d6d6d;
-  border-bottom: none;
+  border-bottom:none;
+  background:#fff;
+  top:1px;
+  line-height: 36px;
 }
 
-li.main:hover ul.box{
-  display: block;
+li.main .box{
+  display: none;
   position: absolute;
-  right: auto;
-  left: 0px; 
+  left: 0px;
+  top: 38px;
 }
 
-li.main:hover ul#last{
-  display: block;
-  position: absolute;
+li.main #last{
   right: 0px;
   left: auto;
+}
+
+li.main:hover .box{
+  display: block;
 }
 
 li.main:hover a.links:hover {
@@ -58,12 +69,20 @@ ul.box{
   display:none;
 }
 
+ul li ul{
+  border: solid 1px #6d6d6d;
+}
+
 li.dropdown{
   width:200px;
   background-color:white;
-  border:1px solid #6d6d6d;
+  border-bottom: 1px solid #6d6d6d;
   padding:10px 5px;
   margin:0px;
+}
+
+li#lastlink{
+  border-bottom:none;
 }
 
 li.main:hover li.dropdown{

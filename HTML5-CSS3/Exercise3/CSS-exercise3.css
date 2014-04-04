@@ -1,0 +1,179 @@
+body{
+  padding:0px;
+  margin: 0px;
+  font-family:"Arial","sans-serif";
+}
+
+#container{
+  width:100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color:#E6E6E6;
+}
+
+#header-box{
+  width:auto;
+  height:auto;
+  text-align: center;
+  padding: 20px;
+  margin: 0px auto;
+}
+
+ul{
+  list-style-type: none;
+  height:auto;
+  padding:0px;
+  margin:0px;
+}
+
+ul li{ 
+  display: inline;
+  padding: 10px 0px;
+}
+
+ul li#heading{
+  font-size:250%;
+}
+
+ul li a{
+  text-decoration: none;
+  color: gray;
+  padding:0px 25px;  
+}
+
+ul li a:hover{
+  color:orange;
+}
+
+            /* MIDDLE INFORMATION */
+
+#box{
+  width:auto;
+  height:auto;
+  background-color: white;  
+  opacity: 0.6; 
+  font-size: 150%;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+span{
+  display: inline;
+  color:orange;
+  padding:0px 10px;
+}
+
+span#main{
+  font-size: 200%;
+  color:black;
+}
+      
+            /* IMAGES */
+
+section{
+  width:auto;
+  margin:0px auto ;
+  padding:20px 0px;
+  -webkit-column-count:3; 
+  -moz-column-count:3; 
+}
+
+img{
+  width: 300px;
+  height: 250px;
+}
+
+.image-details1{
+  width:200px;
+  text-align: left;
+  font-size:18px;
+  color:black;
+  margin-bottom: 5px;
+}
+  
+.image-details2{
+  width: 300px;
+  text-align:left;
+  font-size:16px;
+  color:gray;
+}
+
+figure{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+}
+          
+          /*FOOTER*/
+
+footer{
+  width: auto;
+  margin:0px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+#fdetails1{  
+  font-size: 18px;
+  color:gray;
+}
+
+#fdetails2{
+  font-size: 14px;
+  color:#C2C2C2 ;
+}
+
+      /* MEDIA Queries */
+
+@media screen and (min-width:300px) and (max-width:800px){
+  section{
+    -webkit-column-count:1;
+    -moz-column-count:1; 
+  }
+
+  #box{
+    font-size:80%;
+  }
+
+  span#main{
+    font-size:170%;
+  }
+
+  div#header-box{
+    text-align: center;
+    width:auto;
+    margin: 0px auto;
+  }
+
+  ul{
+    font-size: 70%;
+    height: auto;
+  }
+
+  li#list{
+    display: inline;
+    float: center;
+  }
+
+  #list1{
+    position: relative;
+    top: 40px;
+  }
+
+  ul li{
+    display:block;
+  }
+
+  #heading{
+    position:relative;
+    top: -70px;
+  }
+  ul li a{
+    padding:0px 15px;
+  }
+}
+
+

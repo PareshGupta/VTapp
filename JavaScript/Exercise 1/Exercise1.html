@@ -1,43 +1,11 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Comparing Age</title>
+    <script src="javascript1.js"></script>
+  </head>
 
-<head>
-  <title>Comparing Age</title>
-</head>
-
-<body>
-  <h2>Comparing the Age of 2 users</h2>
-  <script>
-    //creating a class user 
-    function user(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-
-     // instantiate two objects
-    var user1 = new user("Paresh");
-    var user2 = new user("Sameer");
-
-     // method is created 
-    user1.compare = function () {
-      user1.age = prompt("Enter the age of " + user1.name);
-      user2.age = prompt("Enter the age of " + user2.name);
-
-      if (user1.age == user2.age) {
-        alert("Both are of same age");
-      } else {
-        if (user1.age > user2.age) {
-          alert(user1.name + " is older than " + user2.name);
-        } else {
-          alert(user2.name + " is older than " + user1.name);
-        }
-      }
-    }
-
-     // calling the method
-    user1.compare(user2);
-    document.write("Please Reload the page again.")
-  </script>
-</body>
-
+  <body>
+    <h2>Comparing the Age of 2 users</h2>
+  </body>
 </html>

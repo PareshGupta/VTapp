@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Checkbox Exercise</title>
-  <script src="javascript2.js"></script>
-</head>
-<body>
-  <h3>Click Checkall Button to select all colors</h3>
-  <form id="form1">
-    <input type="checkbox" id="check">Red<br/>
-    <input type="checkbox" id="check">Green<br/>
-    <input type="checkbox" id="check">Yellow<br/>
-    <input type="checkbox" id="check">White<br/>
-    <input type="checkbox" id="check">Black<br/>
-    <button type="button">
-      <a href="#" onclick="CheckAll(true)">Check All</a>
-    </button>
-    <button type="button">
-      <a href="#" onclick="CheckAll(false)">Uncheck All </a>
-    </button>
-  </form>
-</body>
+  <head>
+    <title>Checkbox Exercise</title>
+  </head>
+  <body>
+    <h3>Click Checkall Button to select all colors</h3>
+    <form id="form1">
+      <input id="red" type="checkbox" class="check">
+      <label for="red">Red</label><br/>
+      <input id="green" type="checkbox" class="check">
+      <label for="green">Green</label><br/>
+      <input id="yellow" type="checkbox" class="check">
+      <label for="yellow">Yellow</label><br/>
+      <input id="white" type="checkbox" class="check">
+      <label for="white">White</label><br/>
+      <input id="black" type="checkbox" class="check">
+      <label for="black">Black</label><br/>
+      <a href="#" class="checkall">Check All</a>
+      <a href="#" class="checknone">Uncheck All </a>
+    </form>
+    <script src="javascript2.js"></script>
+  </body>
 </html>

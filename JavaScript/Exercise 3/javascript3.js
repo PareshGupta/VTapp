@@ -20,38 +20,53 @@ var Form = function(form_id){
     this.checkNone(); 
   }
 
-  // method to select maximum of three checkboxes
-  this.checkMaximumThreeCheckBoxes = function(){
-    var checkboxes = this.getCheckBox();
-    var none_checkbox = document.getElementById("none");
-    var total = 0;
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked == true) {
-        none_checkbox.checked = false;
-        total = total + 1;
-      } 
+  // // method to select maximum of three checkboxes
+  // this.checkMaximumThreeCheckBoxes = function(){
+  //   var checkboxes = this.getCheckBox();
+  //   var none_checkbox = document.getElementById("none");
+  //   var total = 0;
+  //   for (var i = 0; i < checkboxes.length; i++) {
+  //     if (checkboxes[i].checked === true) {
+  //       none_checkbox.checked = false;
+  //       total = total + 1;
+  //     } 
       
-      if (total > 3) {
-        checkboxes[i].checked = false;
-        alert("You Can Maximum Select 3 Checkboxes");
-        return false;
-      }
-    }  
-  }
+  //     if (total > 3) {
+  //       checkboxes[i].checked = false;
+  //       alert("You Can Maximum Select 3 Checkboxes");
+  //       return false;
+  //     }
+  //   }  
+  // }
 
-  this.checkThreeCheckBoxes = function() {
-    this.checkMaximumThreeCheckBoxes();
-  }
+  // this.checkThreeCheckBoxes = function() {
+  //   this.checkMaximumThreeCheckBoxes();
+  // }
   
   // method of creating event
   this.events = function(){
     var all_checkboxes = this.getCheckBox();
-    var b = document.getElementById("none"); 
+    var none_checkbox = document.getElementById("none"); 
     
     var value = this;
 
-    // all_checkboxes.onclick = function() {value.checkThreeCheckBoxes(); }
-    b.onclick = function() {value.checkNone(); }
+    all_checkboxes.onclick = function() {value.selectMaximumThree(); }
+    none_checkbox.onclick = function() {value.checkNone(); }
+  }
+
+  //  Practise function
+  this.selectMaximumThree = function() {
+    var a = this.getCheckBox();
+    var count = 0;
+    for(var i = 0; i < a.length; i++){
+      (a[i].checked == true)
+      count = count + 1;
+      if(count > 3){
+        a[i].checked = false;
+        alert("select only three checkboxes");
+        return false;
+      }
+    }
   }
 }
 

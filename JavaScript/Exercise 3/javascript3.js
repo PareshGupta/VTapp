@@ -2,6 +2,7 @@
 var Form = function(form_id){
   this.form_id = form_id;
   this.allcheckboxes = document.getElementsByName("days");
+  this.none_checkbox = document.getElementById("none"); 
   
   // method for uncheck all checkboxes
   this.checkNone = function(){
@@ -12,12 +13,11 @@ var Form = function(form_id){
 
   // method to select maximum of three checkboxes
   this.checkMaximumThreeCheckBoxes = function(){
-    var none_checkbox = document.getElementById("none");
     var total = 0;
     
     for(var i=0; i < this.allcheckboxes.length; i++){
       if(this.allcheckboxes[i].checked === true){
-        none_checkbox.checked = false;
+        this.none_checkbox.checked = false;
         total = total + 1;
       }
   
@@ -31,12 +31,11 @@ var Form = function(form_id){
 
   // method of creating event
   this.events = function(){
-    var none_checkbox = document.getElementById("none"); 
     var value = this;
     for(var i = 0; i < this.allcheckboxes.length; i++){
       this.allcheckboxes[i].onclick = function() {value.checkMaximumThreeCheckBoxes(); }
     }
-    none_checkbox.onclick = function() {value.checkNone(); }
+    this.none_checkbox.onclick = function() {value.checkNone(); }
   }
 }
 

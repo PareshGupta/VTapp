@@ -23,7 +23,7 @@ var Form = function(form_id){
   
       if(total > 3){
         this.allcheckboxes[i].checked = false;
-        alert("You can Maximum select three choices");
+        alert("You can Maximum select 3 choices");
         return false;
       }    
     }

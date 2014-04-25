@@ -2,7 +2,7 @@
 var Form = function(form_id){
   this.form_id = form_id;
   this.allcheckboxes = document.getElementsByName("days");
-  this.none_checkbox = document.getElementById("none");
+  this.none_checkbox = document.getElementById("none"); 
   
   // method for uncheck all checkboxes
   this.checkNone = function(){

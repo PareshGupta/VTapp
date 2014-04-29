@@ -1,35 +1,33 @@
 // creating a class
-var Checkbox = function(id) {
-  this.main_checkbox = document.getElementById(id);
-  this.sub_checkboxes = document.getElementsByName("sub_" + id);
-  this.sub_list = document.getElementById(id + "_list");
-  this.sub_list.style.display = "none";
+var CheckBoxList = function(id) {
+  this.mainCheckBox = document.getElementById(id);
+  this.subCheckBoxesList = document.getElementsByName("sub_" + id);
+  this.listBlock = document.getElementById(id + "_list");
+  this.listBlock.style.display = "none";
   this.events();
 }
 
 // method to display all nested checkboxes
-Checkbox.prototype.displayNoneOrBlock = function() {
-  if(this.main_checkbox.checked == false) {
-    this.sub_list.style.display = "none";
-  } else {
-      if(this.main_checkbox.checked == true) {
-        this.sub_list.style.display = "block";
-        for(var i = 0; i < this.sub_checkboxes.length; i++) {
-          this.sub_checkboxes[i].checked = true; 
-        }
-        this.main_checkbox.scrollIntoView(true);
-      }
+CheckBoxList.prototype.displayNoneOrBlock = function() {
+  if (this.mainCheckBox.checked) {
+    this.listBlock.style.display = "block";
+    for (var i = 0; i < this.subCheckBoxesList.length; i++) {
+      this.subCheckBoxesList[i].checked = true; 
+    }
+    this.mainCheckBox.scrollIntoView(true);
+  } else { 
+    this.listBlock.style.display = "none";
     }
 }
 
 // method for onclick event
-Checkbox.prototype.events = function() {
-  var value = this;
-  this.main_checkbox.onclick = function() { value.displayNoneOrBlock(); };
+CheckBoxList.prototype.events = function() {
+  var that = this;
+  this.mainCheckBox.onclick = function() { that.displayNoneOrBlock(); };
 }
 
 // creating instances of class
-var color_checkbox = new Checkbox("colors");
-var drink_checkbox = new Checkbox("drinks");
-var movie_checkbox = new Checkbox("movies");
-var bike_checkbox = new Checkbox("bikes");
+var colorCheckBox = new CheckBoxList("colors");
+var drinkCheckBox = new CheckBoxList("drinks");
+var movieCheckBox = new CheckBoxList("movies");
+var bikeCheckBox = new CheckBoxList("bikes");

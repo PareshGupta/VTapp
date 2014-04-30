@@ -1,28 +1,31 @@
-function UserName() {
+function User() {
   this.firstName = this.setName("First");
   this.lastName = this.setName("Last");
-  this.alertFullName();
+  this.getFullName();
 }
 
 //method to get name
-UserName.prototype.setName = function(nametype) {
+User.prototype.setName = function(nametype) {
   do {
-    var name = prompt("Please enter your " + nametype + "name")
-  }while(this.checkName(name)) ;
+    var name = prompt("Please enter your " + nametype + "name");
+  } while (this.validateName(name));
   return name;
 }
 
 // method to validate name
-UserName.prototype.checkName = function(name) {
+User.prototype.validateName = function(name) {
   if (name == "" || isNaN(name) == false ) {
-    alert("Invalid Name please enter again");
+    alert("Invalid Name!!! please enter again");
     return true;
   }
 }
 
-// method to alert name
-UserName.prototype.alertFullName = function() {
-  alert("Hello " + this.firstName + " " + this.lastName);
+// method to append name
+User.prototype.getFullName = function() {
+  var fullName = "Hello " + this.firstName + " " + this.lastName;
+  var div = document.getElementById("box");
+  alert(fullName);
+  div.innerHTML = fullName; 
 }
 
-var user = new UserName();
+new User();

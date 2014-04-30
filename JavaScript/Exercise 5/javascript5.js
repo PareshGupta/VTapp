@@ -9,14 +9,18 @@ var CheckBoxList = function(id) {
 
 // method to display all nested checkboxes
 CheckBoxList.prototype.displayNoneOrBlock = function() {
+  var len = this.subCheckBoxesList.length;
   if (this.mainCheckBox.checked) {
     this.listBlock.style.display = "block";
-    for (var i = 0; i < this.subCheckBoxesList.length; i++) {
+    for (i = 0; i < len; i++) {
       this.subCheckBoxesList[i].checked = true; 
     }
     this.mainCheckBox.scrollIntoView(true);
   } else { 
-    this.listBlock.style.display = "none";
+      for (i = 0; i < len; i++) {
+        this.subCheckBoxesList[i].checked = false;
+      }
+      this.listBlock.style.display = "none";
     }
 }
 
@@ -27,7 +31,7 @@ CheckBoxList.prototype.events = function() {
 }
 
 // creating instances of class
-var colorCheckBox = new CheckBoxList("colors");
-var drinkCheckBox = new CheckBoxList("drinks");
-var movieCheckBox = new CheckBoxList("movies");
-var bikeCheckBox = new CheckBoxList("bikes");
+new CheckBoxList("colors");
+new CheckBoxList("drinks");
+new CheckBoxList("movies");
+new CheckBoxList("bikes");

@@ -1,0 +1,10 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#box {
+  width: 200px;
+  margin: 0px auto;
+  font: bold 18px sans-serif;
+}

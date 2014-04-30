@@ -4,59 +4,55 @@ function Form(form_id)
   this.textFields = document.getElementsByClassName('textfields');
   this.textarea = document.getElementById('textbox');
   this.checkbox = document.getElementById('checkbox');  
-  this.valid = true;
 
   // method to validate Textfields
   this.validateTextFields = function() {
-    for(i = 0; i < this.textFields.length; i++) {
+    var valid = true;
+    for (i = 0; i < this.textFields.length; i++) {
       if (this.textFields[i].value === '') {
         alert(this.textFields[i].name + " can not be empty");
         this.textFields[i].focus();
-        this.valid = false;
+        valid = false;
         break;
       }
     }
+    return valid;
   }
 
   // method to validate Textarea
   this.validateTextArea = function() {
-    if(this.textarea.value.length < 50) {
+    var valid = true;
+    if (this.textarea.value.length < 50) {
       alert("Minimum length of this box is 50");
       this.textarea.focus();
-      this.valid = false;
+      valid = false;
     }
+    return valid;
   }
 
   // method to validate checkbox
   this.validateCheckBox = function() {
-    if(this.checkbox.checked === false) {
+    var valid = true;
+    if (!this.checkbox.checked) {
       alert(this.checkbox.name + " must be checked ");
       this.checkbox.focus();
-      this.valid = false;
+      valid = false;
     }
+    return valid;
   }  
 
   // method to validate form
   this.validateForm = function() {
-    this.valid = true;
-    this.validateTextFields(); 
-    if(this.valid){
-      this.validateTextArea();
-    }
-    if(this.valid){
-      this.validateCheckBox();
-    }
-    if(this.valid){
-      this.form.submit();
-      alert("form submitted");
-    }
+    var valid = this.validateTextFields() && this.validateTextArea() && this.validateCheckBox(); 
+    return valid;
   }
 
   // method for onclick event
   this.event = function() {
-    var submit = document.getElementById('go');
     var that = this;
-    submit.onclick = function() { that.validateForm(); };
+    this.form.onsubmit = function() { 
+      return that.validateForm();
+    };
   }
 }
 

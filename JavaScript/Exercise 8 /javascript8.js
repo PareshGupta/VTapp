@@ -1,18 +1,19 @@
-var Prompt = function(){  
-  this.windowOnload();
+var Window = function() {  
+
+  this.enterValidURL = function() {
+    var url = " ";
+    var pattern = /(http|https):\/\/(w{3})\.([\w]+)\.\w{2,6}/;
+    do {
+      url = prompt("Enter the url: " , "http://www.google.com");
+      if (!pattern.test(url)) {
+        alert("Invalid url entered!! Kindly enter it again !!");
+      }
+      else {
+        window.open(url , "_blank" , "width=400 , height=450 , menubar=0 , scrollbars=0 , status=0");
+      }
+    } while (!pattern.test(url));
+  }
 }
 
-Prompt.prototype.windowOnload = function() {
-  var url = " ";
-  while(url === '' || isNaN(url) == false) {
-    url = prompt("Enter the url: " , "http://www.google.com");
-    if(url === '' || isNaN(url) == false) {
-      alert("No url entered!! Kindly enter it again !!");
-    }
-    else {
-      window.open(url,"_blank","width=400,height=450,menubar=0,scrollbars=0,status=0");
-    }
-  }  
-}
-
-var window_onload = new Prompt();
+var urlPrompt = new Window();
+urlPrompt.enterValidURL();

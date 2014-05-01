@@ -1,9 +1,9 @@
 // creating a class
 var CheckBoxList = function(id) {
   this.mainCheckBox = document.getElementById(id);
-  this.subCheckBoxesList = document.getElementsByName("sub_" + id);
-  this.listBlock = document.getElementById(id + "_list");
-  this.listBlock.style.display = "none";
+  this.subCheckBoxes = document.getElementsByName("sub_" + id);
+  this.subBlock = document.getElementById(id + "_list");
+  this.subBlock.style.display = "none";
   this.events();
 }
 
@@ -18,15 +18,15 @@ CheckBoxList.prototype.checkUncheckMainCheckBoxes = function() {
 
 // method to display all sub checkboxes
 CheckBoxList.prototype.checkAndDisplaySubCheckBoxes = function(choice) {
-  var length = this.subCheckBoxesList.length;
+  var length = this.subCheckBoxes.length;
   for (i = 0; i < length; i++) {
-    this.subCheckBoxesList[i].checked = choice;
+    this.subCheckBoxes[i].checked = choice;
   }
-  if (choice == true){
-    this.listBlock.style.display = "block";
+  if (choice == true) {
+    this.subBlock.style.display = "block";
     this.mainCheckBox.scrollIntoView(choice);
   } else {
-    this.listBlock.style.display = "none";
+    this.subBlock.style.display = "none";
     this.mainCheckBox.scrollIntoView(choice);
   }
 }

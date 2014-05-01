@@ -7,27 +7,34 @@ var CheckBoxList = function(id) {
   this.events();
 }
 
-// method to display all nested checkboxes
-CheckBoxList.prototype.displayNoneOrBlock = function() {
-  var len = this.subCheckBoxesList.length;
-  if (this.mainCheckBox.checked) {
-    this.listBlock.style.display = "block";
-    for (i = 0; i < len; i++) {
-      this.subCheckBoxesList[i].checked = true; 
-    }
-    this.mainCheckBox.scrollIntoView(true);
+// method to check or uncheck  checkboxes
+CheckBoxList.prototype.checkUncheckMainCheckBoxes = function() {
+  if (this.mainCheckBox.checked) {  
+    this.checkAndDisplaySubCheckBoxes(true);
   } else { 
-      for (i = 0; i < len; i++) {
-        this.subCheckBoxesList[i].checked = false;
-      }
-      this.listBlock.style.display = "none";
-    }
+    this.checkAndDisplaySubCheckBoxes(false);
+  }
+}
+
+// method to display all sub checkboxes
+CheckBoxList.prototype.checkAndDisplaySubCheckBoxes = function(choice) {
+  var length = this.subCheckBoxesList.length;
+  for (i = 0; i < length; i++) {
+    this.subCheckBoxesList[i].checked = choice;
+  }
+  if (choice == true){
+    this.listBlock.style.display = "block";
+    this.mainCheckBox.scrollIntoView(choice);
+  } else {
+    this.listBlock.style.display = "none";
+    this.mainCheckBox.scrollIntoView(choice);
+  }
 }
 
 // method for onclick event
 CheckBoxList.prototype.events = function() {
   var that = this;
-  this.mainCheckBox.onclick = function() { that.displayNoneOrBlock(); };
+  this.mainCheckBox.onclick = function() { that.checkUncheckMainCheckBoxes(); };
 }
 
 // creating instances of class

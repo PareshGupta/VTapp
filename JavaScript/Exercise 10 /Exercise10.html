@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet10.css">
+  </head>
+
+  <body>
+    <div id="container">
+      <header>Registration Form</header>
+      <form id="registration_form" action="#" method="get">
+        <ul>
+          <li>
+            <span class="labels"><p>Login Id</p></span>
+            <span class="inputs">
+              <input type="text" name="Login_Id" class="textfields input">
+            </span>
+          </li>
+
+          <li>
+            <span class="labels"><p>Email</p></span>
+            <span class="inputs">
+              <input type="text" name="Email_Id" class="textfields input">
+            </span>
+          </li>
+
+          <li>
+            <span class="labels"><p>Name</p></span>
+            <span class="inputs">
+              <input type="text" name="User_Name" class="textfields input">
+            </span>
+          </li>
+          
+          <li>
+            <span class="labels"><p>Timezone</p></span>
+            <span class="inputs">
+              <select name="timeZone" class="input">
+                <option value="GMT">GMT</option>
+                <option value="GMT +5.5">GMT +5.50</option>
+                <option value="GMT +1">GMT +1</option>
+                <option value="GMT +4">GMT +4</option>
+              </select>
+            </span>
+          </li>
+
+          <li>
+            <span class="labels"><p>Home Page</p></span>
+            <span class="inputs">
+              <input type="text" name="Home_Page" class="textfields input">
+            </span>
+          </li>
+        </ul>
+
+        <span>About me</span><br/>
+        <textarea id="textbox" name="textbox" rows="10" cols="40"></textarea><br />
+
+        <input type="checkbox" id="checkbox" name="checkbox">
+        <label for="checkbox">Receive notification of comments</label>
+
+        <p id="detail">You will be sent an email when someone post comments to your blog or Album</p>
+        <p id="confirm">Your password would be mailed to you</p>
+        <input type="submit" value="Go" id="go" name="save" />
+      </form>
+    </div>
+    <script src="javascript10.js"></script>
+  </body>
+</html>

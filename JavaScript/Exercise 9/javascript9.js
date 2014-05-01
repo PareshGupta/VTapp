@@ -1,41 +1,26 @@
-function MoveCountries() {
-  this.list1 = document.getElementById('countrylist1');
-  this.list2 = document.getElementById("countrylist2");
+function CountryNames() {   
+  this.selectbox1 = document.getElementById('countrylist1');
+  this.selectbox2 = document.getElementById("countrylist2");
   this.add = document.getElementById("add");
   this.remove = document.getElementById("remove");
-  // this.events();
 
   // method for onclick event
-  this.addOrRemoveEvents = function() {
+  this.addOrRemoveEvent = function() {
     var that = this;
-    this.add.onclick = function() {that.moveCountryNames1();};
-    this.remove.onclick = function() {that.moveCountryNames2();};
+    this.add.onclick = function() {that.moveCountries(that.selectbox1,that.selectbox2);};
+    this.remove.onclick = function() {that.moveCountries(that.selectbox2,that.selectbox1);};
   }
 
-  // method to move countries from first list
-  this.moveCountryNames1 = function() {
-    for (var i = 0; i < this.list1.options.length; i++) {
-      if (this.list1.options[i].selected) {
-        this.list2.appendChild(this.list1.options[i--]);
+  // method to move countries form one list to other
+  this.moveCountries = function(choice1,choice2) {
+    for (var i = 0; i < choice1.options.length; i++) {
+      if (choice1.options[i].selected) {
+        choice2.appendChild(choice1.options[i--]);
       }
     }
-  } 
-
-  // method to move countries from second list
-  this.moveCountryNames2 = function() {
-    for (var i = 0; i < this.list2.options.length; i++) {
-      if (this.list2.options[i].selected) {
-        this.list1.appendChild(this.list2.options[i--]);
-      }
-    }
-  } 
+  }
 }
 
-var countries = new MoveCountries();
-countries.addOrRemoveEvents();
+var countryList = new CountryNames();
+countryList.addOrRemoveEvent();
 
-
-// issues...variable name (add_list)...
-// remove button method...same as moveCountryNames() ..
-      // or 
-// one method for both;

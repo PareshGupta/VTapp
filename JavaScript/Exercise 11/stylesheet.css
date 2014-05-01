@@ -1,0 +1,41 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#container {
+  width: 400px;
+  height: 100px;
+  margin: 10px auto;
+  border: 1px solid black;
+}
+
+ul {
+  width: 100%;
+  list-style-type: none;
+  display: table;
+  padding-left: 0px;
+}
+
+.labels {
+  width:100px;
+  display: table-cell;
+  text-align: right;
+  padding-left: 20px;
+}
+
+.inputs {
+  display: table-cell;
+  padding-left: 20px;
+}
+
+input[type="submit"] {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: block;
+  margin: 10px auto;
+  padding : 2px;
+}
+
+
+

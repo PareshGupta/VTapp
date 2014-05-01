@@ -7,8 +7,12 @@ function CountryNames() {
   // method for onclick event
   this.addOrRemoveEvent = function() {
     var that = this;
-    this.add.onclick = function() { that.moveCountries(that.selectbox1, that.selectbox2); };
-    this.remove.onclick = function() { that.moveCountries(that.selectbox2, that.selectbox1); };
+    this.add.onclick = function() { 
+      that.moveCountries(that.selectbox1, that.selectbox2); 
+    };
+    this.remove.onclick = function() { 
+      that.moveCountries(that.selectbox2, that.selectbox1); 
+    };
   }
 
   // method to move countries form one list to other

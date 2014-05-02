@@ -22,13 +22,8 @@ CheckBoxList.prototype.checkAndDisplaySubCheckBoxes = function(choice) {
   for (i = 0; i < length; i++) {
     this.subCheckBoxes[i].checked = choice;
   }
-  if (choice == true) {
-    this.subBlock.style.display = "block";
-    this.mainCheckBox.scrollIntoView(choice);
-  } else {
-    this.subBlock.style.display = "none";
-    this.mainCheckBox.scrollIntoView(choice);
-  }
+  this.subBlock.style.display = (choice) ? "block" : "none";
+  this.mainCheckBox.scrollIntoView(choice);
 }
 
 // method for onclick event

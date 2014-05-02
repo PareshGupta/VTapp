@@ -1,8 +1,10 @@
 function Form(form_id) {
   this.form = document.getElementById(form_id);
-  this.textFields = document.getElementsByClassName('textfields');
-  this.textarea = document.getElementById('textbox');
-  this.checkbox = document.getElementById('checkbox');  
+  this.textFields = document.getElementsByClassName("data");
+  this.textarea = document.getElementById("message");
+  this.checkbox = document.getElementById("check");
+  var urlRegex = /(http(s?)\:\/\/)(w{3}\.)?([\w]+)+\.(\w{2,6}$)/;
+  var emailRegex = /((\w+)(\.?))+@(\w+)\.(\w{2,6}$)/;
 
   // method to validate Textfields
   this.validateTextFields = function() {
@@ -20,55 +22,49 @@ function Form(form_id) {
 
   //  method to validate url
   this.validateUrl = function() {
-    var valid = true;
-    var url = document.getElementsByName("Home_Page")[0];
-    var pattern = /(http(s?)\:\/\/)(w{3}\.)?([\w]+)+\.(\w{2,6}$)/;
-    if (!pattern.test(url.value)) {
+    var url = document.getElementById("web_address");
+    var valid = urlRegex.test(url.value);
+    if (!valid) {
       alert("Invalid Url Entered \n \t Enter Again");
       url.focus();
-      valid = false;
     } 
     return valid;
   }
 
   // method to validate email id
   this.validEmailId = function() {
-    var valid = true;
-    var email = document.getElementsByName("Email_Id")[0];
-    var pattern = /((\w+)(\.?))+@(\w+)\.(\w{2,6}$)/;
-    if (!pattern.test(email.value)) {
+    var email = document.getElementById("userId");  
+    var valid = emailRegex.test(email.value);
+    if (!valid) {
       alert("Invalid Email Entered \n \t Enter Again");
       email.focus();
-      valid = false;
     }
     return valid;
   }
 
   // method to validate Textarea
   this.validateTextArea = function() {
-    var valid = true;
-    if (this.textarea.value.length < 50) {
+    var valid = !(this.textarea.value.length < 50);
+    if (!valid) {
       alert("Minimum length of this box is 50");
       this.textarea.focus();
-      valid = false;
     }
     return valid;
   }
 
   // method to validate checkbox
   this.validateCheckBox = function() {
-    var valid = true;
-    if (!this.checkbox.checked) {
+    var valid = this.checkbox.checked;
+    if (!valid) {
       alert(this.checkbox.name + " must be checked ");
       this.checkbox.focus();
-      valid = false;
     }
     return valid;
   }  
 
   // method to validate form
   this.validateForm = function() {
-    var valid = this.validateTextFields() && this.validEmailId()  && this.validateUrl() && this.validateTextArea() && this.validateCheckBox(); 
+    var valid = this.validateTextFields() && this.validEmailId() && this.validateUrl() &&  this.validateTextArea() && this.validateCheckBox(); 
     return valid;
   }
 

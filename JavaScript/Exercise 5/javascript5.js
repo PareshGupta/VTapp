@@ -10,14 +10,14 @@ var CheckBoxList = function(id) {
 // method to check or uncheck  checkboxes
 CheckBoxList.prototype.checkUncheckMainCheckBoxes = function() {
   if (this.mainCheckBox.checked) {  
-    this.checkAndDisplaySubCheckBoxes(true);
+    this.toggleSubCheckBoxes(true);
   } else { 
-    this.checkAndDisplaySubCheckBoxes(false);
+    this.toggleSubCheckBoxes(false);
   }
 }
 
 // method to display all sub checkboxes
-CheckBoxList.prototype.checkAndDisplaySubCheckBoxes = function(choice) {
+CheckBoxList.prototype.toggleSubCheckBoxes = function(choice) {
   var length = this.subCheckBoxes.length;
   for (i = 0; i < length; i++) {
     this.subCheckBoxes[i].checked = choice;

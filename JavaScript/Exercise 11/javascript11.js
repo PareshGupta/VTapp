@@ -2,14 +2,13 @@ function Form() {
   this.form = document.getElementById('form');
   this.number = document.getElementById('number');
   this.result = document.getElementById('result');
+  var digitRegex = /\d+/;
   
   // method to validate number entered
   this.validateNumberField = function() { 
-    var valid = true;
-    var pattern = /\d+/;
-    if (!pattern.test(this.number.value)) {
+    var valid = digitRegex.test(this.number.value);
+    if (!valid) {
       result.value = false;
-      valid = false;
     } else {
       result.value = true;
     }

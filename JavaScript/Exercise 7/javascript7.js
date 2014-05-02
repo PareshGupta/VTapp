@@ -12,8 +12,8 @@ User.prototype.setName = function(nametype) {
 }
 
 // method to validate name
-User.prototype.validateName = function(name,nametype) {
-  if (name == "" || isNaN(name) == false ) {
+User.prototype.validateName = function(name, nametype) {
+  if (isNaN(name) == false ) {
     alert("Invalid " + nametype +"Name!!! please enter again");
     return true;
   }

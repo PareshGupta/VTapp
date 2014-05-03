@@ -57,8 +57,8 @@ Row.prototype.editAndDeleteEvent = function() {
 
 // method to edit the row
 Row.prototype.editRowValues = function() {
-  this.cell[0] = this.checkAndInsertInputTag(this.cell[0]);
-  this.cell[1] = this.checkAndInsertInputTag(this.cell[1]);
+  this.cell[0] = this.insertInputTags(this.cell[0]);
+  this.cell[1] = this.insertInputTags(this.cell[1]);
   this.cell[2].childNodes[1].remove();
   this.cell[2].replaceChild(creatingElements.createButton(), this.cell[2].childNodes[0]); 
   this.saveEvent();

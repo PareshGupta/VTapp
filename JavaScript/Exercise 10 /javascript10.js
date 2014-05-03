@@ -63,9 +63,8 @@ function Form(form_id) {
   }  
 
   // method to validate form
-  this.validateForm = function() {
-    var valid = this.validateTextFields() && this.validEmailId() && this.validateUrl() &&  this.validateTextArea() && this.validateCheckBox(); 
-    return valid;
+  this.validateForm = function() { 
+    return ( this.validateTextFields() && this.validEmailId() && this.validateUrl() &&  this.validateTextArea() && this.validateCheckBox() );
   }
 
   // method for onclick event

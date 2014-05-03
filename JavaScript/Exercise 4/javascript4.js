@@ -1,13 +1,13 @@
 // creating object for new HTMl tags
 var creatingElements = {
-  createButton : function() {
+  button : function() {
     var button = document.createElement("button");
     button.setAttribute("class", "save");
     button.innerText = "Save";
     return button;
   },
 
-  createAnchor : function(choice) {
+  anchor : function(choice) {
     var anchor = document.createElement("a");
     anchor.innerText = choice;
     anchor.setAttribute("class", choice);
@@ -15,9 +15,11 @@ var creatingElements = {
     return anchor;
   },
 
-  createInput : function(choice) {
+  input : function(choice) {
     var input = document.createElement("input");
-    input.setAttribute("value", choice.innerText);
+    if (choice) {
+      input.setAttribute("value", choice.innerText);
+    }
     return input;
   }
 }
@@ -41,8 +43,8 @@ Row.prototype.inputValues = function() {
   var input = this.row.getElementsByTagName("input");
   this.cell[0].innerText = input[0].value;
   this.cell[1].innerText = input[0].value; 
-  this.cell[2].replaceChild(creatingElements.createAnchor("Edit"), this.cell[2].childNodes[0]);
-  this.cell[2].appendChild(creatingElements.createAnchor("Delete"));  
+  this.cell[2].replaceChild(creatingElements.anchor("Edit"), this.cell[2].childNodes[0]);
+  this.cell[2].appendChild(creatingElements.anchor("Delete"));  
   this.editAndDeleteEvent();
 }
 
@@ -60,16 +62,16 @@ Row.prototype.editRowValues = function() {
   this.cell[0] = this.insertInputTags(this.cell[0]);
   this.cell[1] = this.insertInputTags(this.cell[1]);
   this.cell[2].childNodes[1].remove();
-  this.cell[2].replaceChild(creatingElements.createButton(), this.cell[2].childNodes[0]); 
+  this.cell[2].replaceChild(creatingElements.button(), this.cell[2].childNodes[0]); 
   this.saveEvent();
 }
 
 // inserting values to cell1 and cell2
 Row.prototype.insertInputTags = function(choice) {
   if (choice.innerText === "") {
-    choice.appendChild(creatingElements.createInput(choice));
+    choice.appendChild(creatingElements.input(choice));
   } else {
-    choice.replaceChild(creatingElements.createInput(choice), choice.childNodes[0]);  
+    choice.replaceChild(creatingElements.input(choice), choice.childNodes[0]);  
   }
 }
 
@@ -79,17 +81,16 @@ var Table = function(id) {
   this.table = document.getElementById(id);
   this.add = document.getElementById("button"); 
   this.add.onclick = function() { that.createRow(); };
-  this.createRow();
 }
 
 // creating rows and instances of Row class
 Table.prototype.createRow = function() {
   var row = this.table.insertRow(-1);
   row.setAttribute("class", "tablerow");
-  row.insertCell(0).appendChild(document.createElement("input"));
-  row.insertCell(1).appendChild(document.createElement("input"));
-  row.insertCell(2).appendChild(creatingElements.createButton()); 
-  new Row(document.getElementsByTagName("tr").length - 1);
+  row.insertCell(0).appendChild(creatingElements.input());
+  row.insertCell(1).appendChild(creatingElements.input());
+  row.insertCell(2).appendChild(creatingElements.button()); 
+  new Row(this.table.rows.length - 1);
 }
 
 // New Instance of Table

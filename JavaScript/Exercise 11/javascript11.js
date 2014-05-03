@@ -6,13 +6,8 @@ function Form() {
   
   // method to validate number entered
   this.validateNumberField = function() { 
-    var valid = digitRegex.test(this.number.value);
-    if (!valid) {
-      result.value = false;
-    } else {
-      result.value = true;
-    }
-    return valid;
+    result.value = digitRegex.test(this.number.value);
+    return result.value;
   }
   
   // method to submit form

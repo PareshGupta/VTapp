@@ -1,4 +1,4 @@
-// creating object for new HTMl tags
+// creating object for new HTML tags
 var creatingElements = {
   button : function() {
     var button = document.createElement("button");
@@ -93,5 +93,5 @@ Table.prototype.createRow = function() {
   new Row(this.table.rows.length - 1);
 }
 
-// New Instance of Table
+// new Instance of Table
 new Table("table");

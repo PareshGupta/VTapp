@@ -1,74 +1,73 @@
-var person = 
-[ {"name":"Luigi Damiano"},
-  {"name":"Zenith Coboro"},
-  {"name":"Zig Ziglar"},
-  {"name":"Steve Costner"},
-  {"name":"Bill Grazer"},
-  {"name":"Timothy Frazer"},
-  {"name":"Boris Becker"},
-  {"name":"Glenn Gladwich"},
-  {"name":"Jim Jackson"},
-  {"name":"Aaron Kabin"},
-  {"name":"Roy Goldwin"},
-  {"name":"Jason Goldberg"},
-  {"name":"Tim Ferris"},
-  {"name":"Buck Singham"},
-  {"name":"Malcom Gladwell"},
-  {"name":"Joy Rabura"},
-  {"name":"Vid Luther"},
-  {"name":"Tom Glicken"},
-  {"name":"Ray Baxter"},
-  {"name":"Ari Kama"},
-  {"name":"Kenichi Suzuki"},
-  {"name":"Rick Olson"} ]
+var personNames = [ { "name" : "Luigi Damiano" }, 
+  { "name" : "Zenith Coboro" }, 
+  { "name" : "Zig Ziglar" },
+  { "name" : "Steve Costner" }, 
+  { "name" : "Bill Grazer" }, 
+  { "name" : "Timothy Frazer" },
+  { "name" : "Boris Becker" }, 
+  { "name" : "Glenn Gladwich" }, 
+  { "name" : "Jim Jackson" },
+  { "name" : "Aaron Kabin" }, 
+  { "name" : "Roy Goldwin" }, 
+  { "name" : "Jason Goldberg" },
+  { "name" : "Tim Ferris" }, 
+  { "name" : "Buck Singham" }, 
+  { "name" : "Malcom Gladwell" },
+  { "name" : "Joy Rabura" }, 
+  { "name" : "Vid Luther" }, 
+  { "name" : "Tom Glicken" },
+  { "name" : "Ray Baxter" }, 
+  { "name" : "Ari Kama" }, 
+  { "name" : "Kenichi Suzuki" },
+  { "name" : "Rick Olson" } ]
 
 //  creating Class
-function Names(person) {
-  this.name = person;
-  this.inputBox = document.getElementById('nameBox');
-  this.searchListBox = document.getElementById("container");
-  this.searchListBox.style.display = "none";
+function Names() {
+  this.name = document.getElementById('nameBox');
+  this.nameList = document.getElementById("container");
+  this.nameList.style.display = "none";
+  var that = this;
 
-//  method to search name
-  this.searchName = function() {
-    this.clearResult();
-    if (this.inputBox.value !== " ") {
-      for (i = 0; i < this.name.length; i++) {
-        if (this.name[i]["name"].indexOf(this.inputBox.value) === 0) {
-          this.displayName();
+//  method to search the name
+  this.setName = function() {
+    this.clearName();
+    if (this.name.value == "") {
+      this.nameList.innerHTML = "";
+    } else {
+      for (i = 0; i < personNames.length; i++) {
+        if (personNames[i]["name"].indexOf(this.name.value) === 0) {
+          this.displayNameList();
         }
       }
     } 
   }
 
 //  method to create and display name-list
-  this.displayName = function() {
-    var that = this;
+  this.displayNameList = function() {
     var para = document.createElement("p");
-    var text = document.createTextNode(this.name[i]['name']);
+    var text = document.createTextNode(personNames[i]['name']);
     para.appendChild(text);
     para.onclick = function() {
-      that.inputBox.value = this.textContent;
+      that.name.value = this.textContent;
     }
-    this.searchListBox.appendChild(para);
-    this.searchListBox.style.display = "block";
+    this.nameList.appendChild(para);
+    this.nameList.style.display = "block";
   }
 
-  this.clearResult = function() {
-    this.searchListBox.innerHTML = '';
-    this.searchListBox.style.display = 'none';
+  this.clearName = function() {
+    this.nameList.innerHTML = '';
+    this.nameList.style.display = 'none';
   }
 
   this.event = function() {
-    var that = this;
-    this.inputBox.onkeyup = function() { that.searchName(); };
+    this.name.onkeyup = function() { that.setName(); };
   }
 }
   
 // creating Object
-var personName = new Names(person);
-personName.event();
+var person = new Names();
+person.event();
 
 window.onclick = function() {
-  personName.searchListBox.style.display = "none";
+  person.nameListBlock.style.display = "none";
 }

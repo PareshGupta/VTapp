@@ -69,5 +69,5 @@ var person = new Names();
 person.event();
 
 window.onclick = function() {
-  person.nameListBlock.style.display = "none";
+  person.nameList.style.display = "none";
 }

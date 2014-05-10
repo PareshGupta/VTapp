@@ -27,6 +27,7 @@ function Names() {
   this.nameList = document.getElementById("container");
   this.nameList.style.display = "none";
   var that = this;
+  var nameArray = new Array();
 
 //  method to search the name
   this.setName = function() {
@@ -35,28 +36,34 @@ function Names() {
       this.nameList.innerHTML = "";
     } else {
       for (i = 0; i < personNames.length; i++) {
-        if (personNames[i]["name"].indexOf(this.name.value) === 0) {
-          this.displayNameList();
+        if (!personNames[i]["name"].indexOf(this.name.value)) {
+          nameArray.push(personNames[i]["name"]);
         }
       }
+      this.displayNameList(nameArray);
     } 
   }
 
 //  method to create and display name-list
-  this.displayNameList = function() {
-    var para = document.createElement("p");
-    var text = document.createTextNode(personNames[i]['name']);
-    para.appendChild(text);
-    para.onclick = function() {
-      that.name.value = this.textContent;
+  this.displayNameList = function(obj) {
+    for (var i = 0; i < obj.length; i++) {
+      if (obj.length > 0) {
+        var para = document.createElement("p");
+        var text = document.createTextNode(obj[i]);
+        para.appendChild(text);
+        this.nameList.appendChild(para);
+        this.nameList.style.display = "block";
+        para.onclick = function() {
+          that.name.value = this.textContent;
+        }
+      }
     }
-    this.nameList.appendChild(para);
-    this.nameList.style.display = "block";
   }
 
   this.clearName = function() {
     this.nameList.innerHTML = '';
     this.nameList.style.display = 'none';
+    nameArray.splice(0,nameArray.length);
   }
 
   this.event = function() {

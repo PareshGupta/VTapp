@@ -1,28 +1,24 @@
-function Question (op1, op2, operator) {
+function Question(op1, op2, operator) {
   this.operand1 = op1;
   this.operand2 = op2;
-  this.operator  = operator;
-  this.answer = this.answer;
+  this.operator = operator;
+  this.answer;
 
-  Question.prototype.evaluateAnswer = function(choice) {
+  Question.prototype.correctAnswer = function() {
     switch (this.operator) {
-      case "+" :  
-        this.answer = this.operand1 + this.operand2; 
-        break;
-
-      case "-" :  
-        this.answer = this.operand1 - this.operand2; 
-        break;
-
-      case "/" :
-        this.answer = this.operand1 / this.operand2; 
-        break;
-
-      case "*" :
-        this.answer = this.operand1 * this.operand2; 
-        break;
+      case "+" : return(parseInt(this.operand1 + this.operand2)); break;
+      case "-" : return(parseInt(this.operand1 - this.operand2)); break;
+      case "/" : return(parseInt(this.operand1 / this.operand2)); break;
+      case "*" : return(parseInt(this.operand1 * this.operand2)); break;
     }
-    return this.answer;
+  }
+
+  Question.prototype.evaluateAnswer = function() {
+    return(this.correctAnswer() == this.answer);
+  }
+
+  Question.prototype.toString = function() {
+    return(this.operand1 + " " + this.operator + " " + this.operand2);
   }
 }
 
@@ -32,93 +28,90 @@ function Quiz() {
   this.mainDiv = document.getElementById('box');
   this.div = document.getElementById('container');
   this.start = document.getElementById('start');
-  this.heading = document.getElementById('heading')
-  var that = this;
-  var i = 0;
-  var marks = 0;
-  var totalQuestions = 6;
-  var maximumMarks = 80;
+  this.quizInfo = document.getElementById('heading');
+  this.marks = 0;
+  this.totalQuestions = 5;
+  this.correctAnswerMarks = 4;
+  this.incorrectAnswerMarks = 1;
+  this.maximumMarks = this.totalQuestions * this.correctAnswerMarks;
+  this.submittedAnswer = "";
 
 // method to generate array of 20 questions
-  this.generateQuestion = function() {
-    for (var i = 0; i < totalQuestions; i++) {
+  this.generateQuestions = function() {
+    for (var i = 0; i < this.totalQuestions; i++) {
       question = new Question(createQuestion.operand(), createQuestion.operand(), createQuestion.operator());
-      this.questions.push(question)
+      this.questions.push(question);
     }
   }
 
 // method to start quiz event
   this.onStartEvent = function() {
+    var that = this;
     this.start.onclick = function() {
-      that.generateQuestion();
-      that.renderQuestion();
+      that.generateQuestions();
+      that.renderQuestions();
     };
   }
 
 // method to iterate to questions
-  this.iterateQuestion = function() {
-    if (i < this.questions.length) {
-      questions = this.questions[i].operand1 + " " + this.questions[i].operator + " " + this.questions[i].operand2;
-      return questions;
+  this.iterateQuestion = function(index) {
+    if (index < this.questions.length) {
+      return this.questions[index].toString();
     } else { 
-      if (i = totalQuestions) {
+      if (index == this.totalQuestions) {
         this.quizResult();
       }
     }
   }
 
 // method to get the question page
-  this.renderQuestion = function() {
+  this.renderQuestions = function() {
+    var index = 0;
     this.start.remove();
-    this.heading.remove();
+    this.quizInfo.remove();
     var currentQuestion = createElements.pTag();
-    currentQuestion.innerText = "Question " + [i + 1] + " : " + this.iterateQuestion();
-    createElements.pTag().innerText = "Answer : ";
-    submittedAnswer = createElements.inputTag();
-    submittedAnswer.focus();
+    currentQuestion.innerText = "Question " + [index + 1] + " : " + this.iterateQuestion(index);
+    this.submittedAnswer = createElements.inputTag();
+    this.submittedAnswer.focus();
     var next = createElements.buttonTag();
-    next.innerText = "Submit & Next";
     score = createElements.pTag();
-    score.innerText = "Score : " + " 0 / " + maximumMarks;
+    score.innerText = "Score : " + " 0 / " + this.maximumMarks;
+    var that = this;
     next.onclick = function() {
-      that.calculateScore();
-      score.innerText = "Score : " + marks + " / " + maximumMarks;
-      i++;
-      submittedAnswer.value = "";
-      submittedAnswer.focus();
-      currentQuestion.innerText = "Question " + [i + 1] + " : "  + that.iterateQuestion();
+      that.calculateScore(index);
+      score.innerText = "Score : " + that.marks + " / " + that.maximumMarks;
+      index++;
+      that.submittedAnswer.value = "";
+      that.submittedAnswer.focus();
+      currentQuestion.innerText = "Question " + [index + 1] + " : "  + that.iterateQuestion(index);
     };
   }
 
 // method to calculate total score
-  this.calculateScore = function() {
-      currentQuestion = this.questions[i];
-      currentQuestion.answer = currentQuestion.evaluateAnswer();
-      if (submittedAnswer.value == currentQuestion.answer) {
-        marks += 4;
-      } else {
-        marks -= 1;
-        this.wrongQuestions.push(that.iterateQuestion() + " : " + currentQuestion.answer);
-      }
-    return marks;
+  this.calculateScore = function(index) {
+    currentQuestion = this.questions[index];
+    currentQuestion.answer = parseInt(this.submittedAnswer.value);
+    if (currentQuestion.evaluateAnswer()) {
+      this.marks += this.correctAnswerMarks;
+    } else {
+      this.marks -= this.incorrectAnswerMarks;
+      this.wrongQuestions.push(currentQuestion);
+    }
   }
 
 // method to get the result page
   this.quizResult = function() {
     this.div.remove();
-    createElements.hTag().innerText = "Total Score : " + marks + " / " + maximumMarks;
+    createElements.hTag().innerText = "Total Score : " + this.marks + " / " + this.maximumMarks;
     createElements.hTag().innerText = "Correct Answer for the questions you answered wrong are : ";
     for (i = 0; i < this.wrongQuestions.length; i++) {
       var para = document.createElement('p');
-      para.innerText = this.wrongQuestions[i];
+      wrongQuestion = this.wrongQuestions[i];
+      para.innerText = wrongQuestion.toString() + " : " + wrongQuestion.correctAnswer();
       this.mainDiv.appendChild(para);
     }
   }
 }
-
-quiz = new Quiz();
-quiz.onStartEvent();
-
 
 // object to generate random question
 var createQuestion = {
@@ -128,7 +121,7 @@ var createQuestion = {
   },
 
   operator : function() {
-    var operatorArray = ["+","-","*","/"];
+    var operatorArray = ["+", "-", "*", "/"];
     var operator = operatorArray[Math.floor(Math.random() * operatorArray.length)];
     return operator;
   }
@@ -136,29 +129,36 @@ var createQuestion = {
 
 // new object to create elements
 var createElements = {
+  quiz : "",
   pTag : function() { 
     var para = document.createElement('p');
-    quiz.div.appendChild(para);
+    this.quiz.div.appendChild(para);
     return para;
   },
 
   inputTag : function() {
     var input = document.createElement('input');
     input.setAttribute("class", "answer");
-    quiz.div.appendChild(input);
+    this.quiz.div.appendChild(input);
     return input;
   },
 
   buttonTag : function() {
     var button = document.createElement('button');
-    quiz.div.appendChild(button);
+    this.quiz.div.appendChild(button);
     button.innerText = "Submit & Next";
     return button;
   },
 
   hTag : function() {
     var heading = document.createElement('h4');
-    quiz.mainDiv.appendChild(heading);
+    this.quiz.mainDiv.appendChild(heading);
     return heading;
   }
+}
+
+window.onload = function(){
+  quiz = new Quiz();
+  createElements.quiz = quiz;
+  quiz.onStartEvent();
 }

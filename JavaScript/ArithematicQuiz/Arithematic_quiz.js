@@ -30,7 +30,7 @@ function Quiz() {
   this.start = document.getElementById('start');
   this.quizInfo = document.getElementById('heading');
   this.marks = 0;
-  this.totalQuestions = 5;
+  this.totalQuestions = 20;
   this.correctAnswerMarks = 4;
   this.incorrectAnswerMarks = 1;
   this.maximumMarks = this.totalQuestions * this.correctAnswerMarks;

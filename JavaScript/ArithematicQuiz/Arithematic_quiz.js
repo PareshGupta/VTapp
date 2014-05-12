@@ -36,7 +36,7 @@ function Quiz() {
   var that = this;
   var i = 0;
   var marks = 0;
-  var totalQuestions = 6;
+  var totalQuestions = 20;
   var maximumMarks = 80;
 
 // method to generate array of 20 questions

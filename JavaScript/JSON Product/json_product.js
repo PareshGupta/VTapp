@@ -20,7 +20,7 @@ var products = [ {"name" : "1", "url" : "1.jpg", "color" : "Yellow", "brand" : "
   {"name" : "20", "url" : "20.jpg", "color" : "Yellow", "brand" : "BRAND A", "sold_out" : "0"} ]
 
 function ProductSorter(choice) {
-  this.product_container = document.getElementById('container');
+  this.productContainer = document.getElementById('container');
   this.products = products;
   this.sortCriteria = document.getElementById(choice);
   this.event();
@@ -36,24 +36,23 @@ ProductSorter.prototype.compare = function(choice) {
     if (firstElement[choice] > secondElement[choice]) {
       return 1;
     } else if (firstElement[choice] < secondElement[choice]) {
-        return -1;
-    } else if (firstElement[choice] = secondElement[choice]) {
-        return 0;
+      return -1;
+    } else { 
+      return 0;
     }
   }
 }
 
 ProductSorter.prototype.sortProducts = function(choice) {
-  var that = this;
-  this.products.sort(that.compare(choice));
+  this.products.sort(this.compare(choice));
   this.displayProducts();
 }
 
 ProductSorter.prototype.displayProducts = function() {
-  this.product_container.innerHTML = "";
+  this.productContainer.innerHTML = "";
   for (i = 0; i < this.products.length; i++) {
     var productImage = document.createElement("img");
-    this.product_container.appendChild(productImage);
+    this.productContainer.appendChild(productImage);
     productImage.setAttribute("src", this.products[i]['url']);
   }
 }

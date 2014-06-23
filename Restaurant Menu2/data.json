@@ -1,0 +1,26 @@
+{
+  "Wheat" : {"type" : "Bread", "quantity" : 10, "price" : 10},
+
+  "Multi-Grain" : {"type" : "Bread", "quantity" : 8, "price" : 15},
+
+  "Honey Oats" : {"type" : "Bread", "quantity" : 10, "price" : 20},
+
+  "Italian-Bread" : {"type" : "Bread", "quantity" : 12, "price" : 15},
+
+  "Italian vegetables" : {"type" : "Vegetables", "quantity" : 20, "price" : 40}, 
+
+  "Chinese vegetables" : {"type" : "Vegetables", "quantity" : 30, "price" : 35},
+
+  "Indian vegetables" : {"type" : "Vegetables", "quantity" : 25, "price" : 40},
+
+  "Paneer Tikka" : {"type" : "Vegetables", "quantity" : 20, "price" : 50},
+
+  "Mustard" : {"type" : "Sauce", "quantity" : 20, "price" : 15},
+
+  "Mint-Chutney" : {"type" : "Sauce", "quantity" : 15, "price" : 15},
+
+  "Tomato ketchup" : {"type" : "Sauce", "quantity" : 25, "price" : 15},
+
+  "Mayonnaise" : {"type" : "Sauce", "quantity" : 25, "price" : 20}
+
+}

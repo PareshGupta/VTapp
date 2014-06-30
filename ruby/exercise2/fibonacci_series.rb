@@ -8,7 +8,7 @@ class Series
   end
 end
 
-object = Series.new
+series = Series.new
 puts("fibonacci series is : ")
-object.fibonacci(1000) {|num| print num, " "}
+series.fibonacci(1000) {|num| print num, " "}
 puts

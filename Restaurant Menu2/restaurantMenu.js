@@ -18,8 +18,8 @@ var RestaurantApp = {
   },
 
   bindEvents : function() {
-    RestaurantApp.Menu.bindEvents();
-    RestaurantApp.Order.bindEvents();
+    Menu.bindEvents();
+    Order.bindEvents();
     this.bindEventOnResetButton();
   },
 
@@ -32,18 +32,38 @@ var RestaurantApp = {
   reset : function() {
     $("#menu-container li").removeClass("highlight");
     $("#current-order-container table, #current-order-container p").remove();
-    RestaurantApp.Order.currentOrder = null;
+    Order.currentOrder = null;
     $("#current-order-container .total-price").text(0);
   }
 }
 
-RestaurantApp.Menu = {
+var Menu = {
+  setup : function() {
+    var menuItems = Object.keys(RestaurantApp.seedData);
+    for(var i = 0; i < menuItems.length; i++) {
+      if($("#" + RestaurantApp.seedData[menuItems[i]]["type"]).length) {
+        $("#" + RestaurantApp.seedData[menuItems[i]]["type"]).append(this.buildHTML(menuItems[i]));        
+      } else {
+        var $newItem = $("<ul>", { id : RestaurantApp.seedData[menuItems[i]]["type"]}).appendTo("#menu-container");
+        $newItem.append(this.buildHTML(menuItems[i]));
+      }
+    }
+  },
+
+  buildHTML : function(menuItem) {
+  	var html = "";
+ 		html += "<p class='item-name'>" + menuItem + "</p>";
+    html += "<p class='quantity'>" + RestaurantApp.seedData[menuItem]["price"] + "</p>";
+    html += "<p class='price'>" + RestaurantApp.seedData[menuItem]["quantity"] + "</p>";
+    return $("<li>").html(html);
+  },
+
   bindEvents : function() {
     $("#menu-container ul").on('click', 'li', function() {
       // get menu item name
       var menuItem = $(this).find(".item-name").text();
 
-      var order = RestaurantApp.Order.currentOrder || new Order();
+      var order = Order.currentOrder || new Order();
 
       if(!$(this).hasClass("highlight")) {
         order.addMenuItem(menuItem);
@@ -60,64 +80,11 @@ RestaurantApp.Menu = {
   }
 }
 
-var Menu = {
-  setup : function() {
-    var menuItems = Object.keys(RestaurantApp.seedData);
-    for(var i = 0; i < menuItems.length; i++) {
-      var html = "";
-      if($("#" + RestaurantApp.seedData[menuItems[i]]["type"]).length) {
-        html += "<p class='item-name'>" + menuItems[i] + "</p>";
-        html += "<p class='quantity'>" + RestaurantApp.seedData[menuItems[i]]["price"] + "</p>";
-        html += "<p class='price'>" + RestaurantApp.seedData[menuItems[i]]["quantity"] + "</p>";
-        $("<li>").html(html).appendTo("#" + RestaurantApp.seedData[menuItems[i]]["type"]);        
-      } else {
-        var $newItem = $("<ul>", { id : RestaurantApp.seedData[menuItems[i]]["type"]}).appendTo("#menu-container");
-        html += "<p class='item-name'>" + menuItems[i] + "</p>";
-        html += "<p class='quantity'>" + RestaurantApp.seedData[menuItems[i]]["price"] + "</p>";
-        html += "<p class='price'>" + RestaurantApp.seedData[menuItems[i]]["quantity"] + "</p>";
-        $("<li>").html(html).appendTo($newItem);
-      }
-    }
-  }
-}
-
-RestaurantApp.Order = {
-  currentOrder: null,
-  placedOrders: [],
-
-  bindEvents : function() {
-    $("#place-order").on('click', function() {
-      var order = RestaurantApp.Order.currentOrder;
-      order.placeOrder();
-      RestaurantApp.Order.displayPlacedOrders(); 
-      RestaurantApp.Order.totalSales();
-      RestaurantApp.reset();
-    });
-  },
-
-  totalSales : function(){
-    var total = 0;
-    for(var i=0; i < this.placedOrders.length; i++) {
-      total += this.placedOrders[i]["price"];
-    }
-    $("#total-sales").text(total);
-  },
-
-  displayPlacedOrders : function() {
-  $("#placed-order-container div").html('')
-  for(var i = 0; i < RestaurantApp.Order.placedOrders.length; i++) {
-    $div = $("<div>");
-    $("<h4>").text(RestaurantApp.Order.placedOrders[i]["name"]).appendTo($div);
-    $div.append(RestaurantApp.Order.placedOrders[i].buildHTML());
-    $div.appendTo("#placed-order-container");
-  } 
-}
-}
 
 function Order() {
   this.menuItems = [];
   this.current = true;
-  RestaurantApp.Order.currentOrder = this;
+  Order.currentOrder = this;
 }
 
 Order.prototype.addMenuItem = function(menuItem) {
@@ -150,8 +117,8 @@ Order.prototype.buildHTML = function() {
 
 Order.prototype.placeOrder = function() {
   this.name = prompt("Please Enter your name to place an order");
-  RestaurantApp.Order.currentOrder = null;
-  RestaurantApp.Order.placedOrders.push(this);
+  Order.currentOrder = null;
+  Order.placedOrders.push(this);
   this.current = false;
 }
 
@@ -160,6 +127,37 @@ Order.prototype.totalPrice = function(){
   for(i = 0; i < this.menuItems.length; i++) {
     this.price += RestaurantApp.seedData[this.menuItems[i]]["price"];
   }  return this.price;
+}
+
+Order.currentOrder = null;
+Order.placedOrders = [];
+
+Order.bindEvents = function() {
+  $("#place-order").on('click', function() {
+    var order = Order.currentOrder;
+    order.placeOrder();
+    Order.displayPlacedOrders(); 
+    Order.totalSales();
+    RestaurantApp.reset();
+  });
+}
+
+Order.totalSales = function(){
+  var total = 0;
+  for(var i=0; i < this.placedOrders.length; i++) {
+    total += this.placedOrders[i]["price"];
+  }
+  $("#total-sales").text(total);
+}
+
+Order.displayPlacedOrders = function() {
+	$("#placed-order-container div").html('')
+  for(var i = 0; i < Order.placedOrders.length; i++) {
+    $div = $("<div>");
+    $("<h4>").text(Order.placedOrders[i]["name"]).appendTo($div);
+    $div.append(Order.placedOrders[i].buildHTML());
+    $div.appendTo("#placed-order-container");
+  }
 }
 
 $(function() {

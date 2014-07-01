@@ -1,3 +1,6 @@
 require_relative '../lib/occurence.rb'
-count = Count.new
-count.alphabets
+
+print "Enter a string : "
+text = gets().chomp
+string = String.new
+string.count_alphabets(text)

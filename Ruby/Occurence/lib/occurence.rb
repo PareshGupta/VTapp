@@ -1,13 +1,11 @@
-class Count
-  def alphabets
-    print "Enter a string : "
-    string = gets()
+class String
+  @@pattern = /[a-z]/i
+  @@alphabets = Hash.new
+
+  def count_alphabets(text)
     print "Occurence of each alphabet in a string is : "
-    alphabets_count = Hash.new
-    string.scan(/[a-z]|[A-Z]/).each{|i|
-      alphabets_count[i] = string.count(i)
-    }
-    puts alphabets_count
+    text.scan(@@pattern).each{ |i| @@alphabets[i] = text.count(i) }
+    puts @@alphabets
   end
 end
 

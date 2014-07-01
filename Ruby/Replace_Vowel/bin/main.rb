@@ -1,3 +1,6 @@
 require_relative '../lib/replace_vowel.rb'
-replace = Replace.new
-replace.vowel
+
+print "Enter the string: "
+text = gets().chomp
+string = String.new
+string.replace_vowels(text)

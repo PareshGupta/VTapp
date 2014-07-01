@@ -1,7 +1,7 @@
-class Replace
-  def vowel
-    print "Enter the string: "
-    string = gets()
-    puts string.gsub(/[aeiou]/, '*')
+class String
+  Pattern = /[aeiou]|[AEIOU]/
+
+  def replace_vowels(text)
+    puts text.gsub(Pattern, '*')
   end
 end

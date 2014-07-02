@@ -1,8 +1,8 @@
 class String
-  @@pattern = /\s+/
+  PATTERN = /\s+/
 
-  def check_palindrome(text)
-    changed_string = text.downcase.gsub(@@pattern, '')
+  def check_palindrome
+    changed_string = self.downcase.gsub(String::PATTERN, '')
     puts changed_string == changed_string.reverse
     quit()
   end

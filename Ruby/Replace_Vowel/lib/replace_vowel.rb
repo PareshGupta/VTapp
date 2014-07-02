@@ -1,7 +1,7 @@
 class String
-  PATTERN = /[aeiou]/i
+  VOWELS_REGEX = /[aeiou]/i
 
   def replace_vowels()
-    gsub(String::PATTERN, '*')
+    gsub(String::VOWELS_REGEX, '*')
   end
 end

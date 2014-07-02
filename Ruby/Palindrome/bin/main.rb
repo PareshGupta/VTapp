@@ -2,4 +2,7 @@ require_relative '../lib/palindrome'
 
 print 'Enter a string : '
 text = gets().chomp
-text.check_palindrome()
+puts text.palindrome?()
+
+string = String.new
+puts string.quit

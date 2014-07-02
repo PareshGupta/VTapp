@@ -1,18 +1,16 @@
 class String
-  PATTERN = /\s+/
+  CHECK_PALINDROME_REGEX = /\s+/
 
-  def check_palindrome
-    changed_string = self.downcase.gsub(String::PATTERN, '')
-    puts changed_string == changed_string.reverse
-    quit()
+  def palindrome?
+    changed_string = downcase.gsub(String::CHECK_PALINDROME_REGEX, '')
+    changed_string == changed_string.reverse
   end
 
   def quit
     print 'Please quit the program(q/Q) : '
     choice = gets().chomp
     if(choice == 'q' || choice == 'Q')
-      puts "you quit"
-      return false
+      "you quit"
     else
       quit()
     end

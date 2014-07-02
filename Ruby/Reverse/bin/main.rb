@@ -1,5 +1,5 @@
-require_relative '../lib/reverse.rb'
+require_relative '../lib/string.rb'
 
 puts "Enter a text : "
-text = gets().chomp
+text = puts gets().chomp.to_s()
 puts text.to_s()

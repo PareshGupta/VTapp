@@ -1,4 +1,4 @@
-require_relative '../lib/replace_vowel.rb'
+require_relative '../lib/string.rb'
 
 print "Enter the string: "
 text = gets().chomp

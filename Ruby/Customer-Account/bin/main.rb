@@ -1,4 +1,4 @@
-require_relative '../lib/customer_account.rb'
+require_relative '../lib/customer.rb'
 
 customer = Customer.new("Paresh")
 puts customer.inspect

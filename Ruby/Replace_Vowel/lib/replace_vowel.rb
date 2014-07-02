@@ -1,7 +1,7 @@
 class String
-  @@pattern = /[aeiou]/i
+  PATTERN = /[aeiou]/i
 
-  def replace_vowels(text)
-    puts text.gsub(@@pattern, '*')
+  def replace_vowels()
+    self.gsub(String::PATTERN, '*')
   end
 end

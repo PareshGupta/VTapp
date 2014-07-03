@@ -1,9 +1,9 @@
 class String
 
-  def count_characters(text)
+  def get_characters_count_hash
     characters = Hash.new(0)
-    text.each_char do |c|
-      case(c)
+    each_char do |character|
+      case(character)
         when('a'..'z') then characters["Lowercase"] += 1
         when('A'..'Z') then characters["Uppercase"] += 1
         when('0'..'9') then characters["Digits"] += 1
@@ -14,4 +14,3 @@ class String
   end
 
 end
-

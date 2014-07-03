@@ -1,7 +1,7 @@
 class Array
 
-  def power(power)
-    map { |a| a ** power }
+  def power(exponent)
+    map { |a| a ** exponent }
   end
 
 end

@@ -5,6 +5,5 @@ class Vehicle
     @name = name
     @price = price
   end
-  
-end
 
+end

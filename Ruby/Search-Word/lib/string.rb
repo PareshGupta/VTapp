@@ -1,14 +1,19 @@
 class String
 
-  def search(word)
-    regex = /("#{word}")/  # regex not working and add ignoring case
-    gsub(regex, "(#{word})")
+  def search_pattern(word)
+    occurence_count = 0
+    regex_to_search = Regexp.new(word, false)
+    searched_string = gsub(regex_to_search) do |match|
+      occurence_count += 1
+      "(#{word})"
+    end
+    searched_string
   end
 
 end
 
 puts 'Enter a string : '
-text = gets().chomp
+text = gets.chomp
 puts 'Enter word to be search : '
-word = gets().chomp
-puts text.search(word)
+word = gets.chomp
+puts text.search_pattern(word)

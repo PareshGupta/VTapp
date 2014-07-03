@@ -1,5 +1,5 @@
-require_relative '../lib/occurence.rb'
+require_relative '../lib/string.rb'
 
 print "Enter a string : "
-text = gets().chomp
-text.count_alphabets()
+text = gets.chomp
+puts text.count_alphabets

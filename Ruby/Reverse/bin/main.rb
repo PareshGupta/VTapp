@@ -1,5 +1,5 @@
 require_relative '../lib/string.rb'
 
-puts "Enter a text : "
-text = puts gets().chomp.to_s()
-puts text.to_s()
+puts "Enter a text :"
+text = gets.chomp
+puts text.to_s

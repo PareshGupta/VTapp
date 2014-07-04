@@ -1,8 +1,8 @@
 require_relative '../lib/array.rb'
 
-array = Array.new(9)
-array.map! do |element|
+array = Array.new
+0.upto(9) do |element|
   print 'Enter array element : '
-  gets.chomp
+  array[element] = gets.chomp
 end
 puts array.group_by_length

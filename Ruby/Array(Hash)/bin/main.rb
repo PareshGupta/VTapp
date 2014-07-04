@@ -1,8 +1,8 @@
-require_relative '../lib/array_hash.rb'
+require_relative '../lib/array.rb'
 
 array = Array.new(9)
-array.map! do |a| 
-  print "Enter array element : "
-  a = gets().chomp
+array.map! do |element|
+  print 'Enter array element : '
+  gets.chomp
 end
-puts array.group_by_length(array)
+puts array.group_by_length

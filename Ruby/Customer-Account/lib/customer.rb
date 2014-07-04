@@ -10,16 +10,20 @@ class Customer
   end
 
   def deposit(amount)
-    @balance += amount
-    puts "Hello Mr.#{@name} \nRs#{amount}/- has been deposited in your account \nYour balance is Rs#{balance}/-"
+    if(amount < 100)
+      'Minimum Rs100/- has to be deposit'
+    else
+      @balance += amount
+      "Rs#{amount}/- has been deposited in your account. \nYour Balance is Rs#{balance}/-"
+    end
   end
 
   def withdraw(amount)
-    if amount >= @balance
-      puts "Transaction cannot be done \nPlease check the balance"
+    if amount > @balance
+      "Transaction cannot be done \nPlease check the balance"
     else
       @balance -= amount
-      puts "Hello Mr.#{@name} \nRs#{amount}/- has been withdrawn from your account \nYour balance is #{balance}"
+      "Rs#{amount}/- has been withdrawn from your account \nYour Balance is Rs#{balance}/-"
     end
   end
 end

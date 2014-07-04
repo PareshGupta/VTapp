@@ -2,18 +2,14 @@ class String
 
   def search_pattern(word)
     occurence_count = 0
-    regex_to_search = Regexp.new(word, false)
+    regex_to_search = Regexp.new(word, true)
     searched_string = gsub(regex_to_search) do |match|
       occurence_count += 1
       "(#{word})"
     end
-    searched_string
+    "#{searched_string} \nTotal Occurence is #{occurence_count}"
   end
 
-end
+  def check_character_case
 
-puts 'Enter a string : '
-text = gets.chomp
-puts 'Enter word to be search : '
-word = gets.chomp
-puts text.search_pattern(word)
+end

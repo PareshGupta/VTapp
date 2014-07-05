@@ -1,10 +1,10 @@
 require_relative '../lib/array.rb'
 
-array = Array.new(5)
+array = Array.new
 
-array.map! do |element| 
+0.upto(5) do
   print 'Enter array element : '
-  gets.chomp.to_i
+  array.push(gets.chomp.to_i)
 end
 
 print array.power(2)

@@ -13,8 +13,8 @@ class Name
         raise 'First letter of the Firstname should be Capital'
       end
       "Welcome #{@firstname} #{@lastname}"
-      rescue Exception => name
-        name.message
+    rescue Exception => name
+      name.message
     end
   end
 

@@ -1,5 +1,6 @@
 class Customer
-  attr_accessor :name, :balance, :account_number
+  attr_accessor :balance
+  attr_reader :name, :account_number
   @@account_no = 99111003461124
 
   def initialize(name)

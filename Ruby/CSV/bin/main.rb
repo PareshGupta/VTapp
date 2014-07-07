@@ -16,12 +16,18 @@ class CSVFile
     @@temp_object
   end
 
-  def iterate_to_hash_and_save
+  def iterate_to_hash
     @@temp_object.each do |key, array|
-      puts key
-      puts array
-      print "\n"
+      puts key, array, "\n"
     end
+  end
+
+  def save_to_new_file
+    File.open('new_file.txt', 'w') do |file_object|
+      @@temp_object.each do |key, array|
+        file_object.puts key, array, "\n"
+      end
+    end 
   end
 
 end
@@ -29,9 +35,7 @@ end
 file = CSVFile.new
 puts file.reading_data
 puts file.writing_data_to_hash
-a = file.iterate_to_hash_and_save  # unexpected input to a new file
-File.open("new_file.txt", 'w') do |file_object|
-  file_object.puts a
-end
+file.iterate_to_hash
 
-# File.open("new_file.txt", 'r')
+file.save_to_new_file
+File.open("new_file.txt", 'r')

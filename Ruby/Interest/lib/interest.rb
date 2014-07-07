@@ -1,5 +1,6 @@
 class Interest
-  attr_accessor :principal, :time, :rate
+  attr_accessor :principal, :time
+  attr_reader :rate
 
   def initialize(principal, time)
     @principal = principal
@@ -7,8 +8,12 @@ class Interest
     @rate = 10 / 100.to_f
   end
 
+  def calculate_simple
+    @interest = @principal * @rate * @time
+  end
+
   def calculate_amount_simply
-    @simple_amount = ((@principal * @rate * @time) + @principal).to_i
+    @simple_amount = (@interest + @principal).to_i
   end
 
   def calculate_amount_compoundly

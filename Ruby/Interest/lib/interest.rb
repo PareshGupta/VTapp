@@ -1,24 +1,22 @@
 class Interest
-  attr_accessor :pricipal, :time, :rate
-  @@rate = 10 / 100
+  attr_accessor :principal, :time, :rate
 
-  def initialize(pricipal, time)
-    @pricipal = pricipal
+  def initialize(principal, time)
+    @principal = principal
     @time = time
+    @rate = 10 / 100.to_f
   end
 
-  def calculate_simple_interest
-    @amount_simple_interest = (@pricipal * @@rate * @time) + @principal
-    @amount_simple_interest
+  def calculate_amount_simply
+    @simple_amount = ((@principal * @rate * @time) + @principal).to_i
   end
 
-  def calculate_compound_interest
-    @amount_compound_interest = @principal * (1 + @@rate) ** @time
-    @amount_compound_interest
+  def calculate_amount_compoundly
+    @compound_amount = (@principal * (1 + @rate) ** @time).to_i
   end
 
   def calculate_amount_difference
-    @amount_compound_interest - @amount_simple_interest
+    @compound_amount - @simple_amount
   end
 
 end

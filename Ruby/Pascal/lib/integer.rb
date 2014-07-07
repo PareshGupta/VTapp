@@ -1,17 +1,16 @@
 class Integer
 
-  def factorial(num)
+  def factorial
     factorial_number = 1
-    for i in (1..num)
+    for i in (1..self)
       factorial_number *= i
     end
     factorial_number
   end
 
-  def pascal(number)
-    0.upto(number) do |i|
+  def pascal
+    0.upto(self) do |i|
       yield(i)
-      "\n"
     end
   end
 

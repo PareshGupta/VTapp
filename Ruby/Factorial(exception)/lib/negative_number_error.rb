@@ -1,0 +1,3 @@
+class NegativeNumberError < StandardError
+
+end

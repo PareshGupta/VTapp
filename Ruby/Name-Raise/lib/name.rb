@@ -8,7 +8,7 @@ class Name
     @lastname = lastname
   end
 
-  def validate?
+  def validate!
     if(@firstname.length == 0 || @lastname.length == 0)
       raise NameError, 'Invalid Name'
     elsif(@firstname[0].match(CHECK_NAME_REGEX))

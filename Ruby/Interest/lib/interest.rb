@@ -1,11 +1,8 @@
 class Interest
-  attr_accessor :principal, :time
-  attr_reader :rate
+  attr_accessor :principal, :time, :rate
 
-  def initialize(principal, time)
-    @principal = principal
-    @time = time
-    @rate = 10 / 100.to_f
+  def initialize
+    yield self
   end
 
   def calculate_simple

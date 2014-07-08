@@ -1,11 +1,16 @@
 require_relative '../lib/interest.rb'
 
 print 'Enter the Principal amount : '
-principal_amount = gets.chomp.to_i
+principal = gets.chomp.to_i
 print 'Enter the Time period : '
-time_period = gets.chomp.to_i
+time = gets.chomp.to_i
 
-interest = Interest.new(principal_amount, time_period)
+interest = Interest.new do |object|
+  object.principal = principal
+  object.time = time
+  object.rate = 10 / 100.to_f
+end
+
 interest.calculate_simple
 puts "Amount calculated by simple interest is Rs#{interest.calculate_amount_simply}/-"
 puts "Amount calculated by compound interest is Rs#{interest.calculate_amount_compoundly}/-"

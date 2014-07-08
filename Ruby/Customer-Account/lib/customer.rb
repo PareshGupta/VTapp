@@ -1,6 +1,7 @@
+require_relative '../lib/amount_error.rb'
+
 class Customer
-  attr_accessor :balance
-  attr_reader :name, :account_number
+  attr_reader :name, :account_number, :balance
   @@account_no = 99111003461124
 
   def initialize(name)
@@ -10,21 +11,27 @@ class Customer
     @@account_no += 1
   end
 
+  # minimum deposit amount is Rs100/- and always in round-off figure
   def deposit(amount)
-    if(amount < 100)
-      'Minimum Rs100/- has to be deposit'
-    else
-      @balance += amount
-      "Rs#{amount}/- has been deposited in your account. \nYour Balance is Rs#{balance}/-"
+    begin
+      if(amount.to_i < 100)
+        raise AmountError, 'Insufficient Amount'
+      else
+        @balance += amount.to_i
+      end
     end
   end
 
+  # withdraw amount always in round-off figure
   def withdraw(amount)
-    if amount > @balance
-      "Transaction cannot be done \nPlease check the balance"
+    if amount.to_i > @balance
+      raise AmountError, 'Insufficient Amount'
     else
-      @balance -= amount
-      "Rs#{amount}/- has been withdrawn from your account \nYour Balance is Rs#{balance}/-"
+      @balance -= amount.to_i
     end
+  end
+  
+  def check_balance
+    "Remaining Balance is Rs#{ @balance }/-"
   end
 end

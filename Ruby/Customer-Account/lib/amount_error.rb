@@ -1,0 +1,3 @@
+class AmountError < StandardError
+
+end

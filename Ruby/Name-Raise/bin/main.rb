@@ -6,4 +6,4 @@ puts 'Enter the last name :'
 lastname = gets.chomp
 
 name = Name.new(firstname, lastname)
-puts name.validate_and_throw_exception
+puts name.validate?

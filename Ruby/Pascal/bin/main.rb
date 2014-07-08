@@ -5,7 +5,7 @@ number = gets.chomp.to_i
 
 number.pascal do |i|
   0.upto(i) do |j|
-    print i.factorial / (j.factorial * (i - j).factorial), ' '
+    print i.calculate_number(j), ' '
   end
   print "\n"
 end

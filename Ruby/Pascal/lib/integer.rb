@@ -14,4 +14,8 @@ class Integer
     end
   end
 
+  def calculate_number(j)
+    self.factorial / (j.factorial * (self - j).factorial)
+  end
+
 end

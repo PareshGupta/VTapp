@@ -1,12 +1,6 @@
 require_relative '../lib/csv_file.rb'
 
+puts 'Enter file name to be created'
+file_name = gets.chomp
 file = CSVFile.new
-puts file.reading_data
-
-File.open('new_file.txt', 'w') do |file_object|
-  file.writing_data_to_hash.each do |key, array|
-    file_object.puts key, array, "\n"
-  end
-end
-
-File.open("new_file.txt", 'r')
+file.write_data_to_new_file(file_name)

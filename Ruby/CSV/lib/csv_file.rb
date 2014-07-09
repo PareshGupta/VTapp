@@ -1,11 +1,12 @@
 require 'csv'
+require_relative '../lib/employee.rb'
 
 class CSVFile
 
   def read_and_store_to_hash
     @temp_object = Hash.new { |hash, key| hash[key] = Array.new }
-    CSV.foreach('data.csv', :headers => true) do |row|
-      @temp_object[row[2]].push("#{ row[0] } (EmpId:#{ row[1] })")
+    CSV.foreach('data.csv', :headers => true) do |column|
+      @temp_object[column[2]].push(Employee.new(column[0], column[1]))
     end
     @temp_object
   end
@@ -19,13 +20,3 @@ class CSVFile
   end
 
 end
-
-# class Employee
-
-#   def initialize(name, emp_id, designation)
-#     @name = name
-#     @emp_id = emp_id
-#     @designation = designation
-#   end
-
-# end

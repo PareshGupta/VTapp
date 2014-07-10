@@ -1,29 +1,31 @@
 require 'date'
 
 class Time
-  CHECK_TIME_REGEX = /(^([0-1]?\d|2[0-3]?)\:([0-5]?\d)\:([0-5]?\d))/  # apply regex to validate time
+  CHECK_TIME_REGEX = /(^([0-1]?\d|2[0-3]?)\:([0-5]?\d)\:([0-5]?\d)$)/
 
-  def sum_each_unit(time)
+  def validate(time)
+    CHECK_TIME_REGEX === time
+  end
+
+  def sum_total_each_unit(time)
     @total_seconds, @total_minutes, @total_hours = 0, 0, 0
     for i in 0...time.length do
-      if(time[i].match(CHECK_TIME_REGEX))
       @total_hours += time[i].hour
       @total_minutes += time[i].minute
       @total_seconds += time[i].second
-      puts "#{@total_hours}:#{@total_minutes}:#{@total_seconds}"
     end
   end
-  # refactor the code to calculate time
+
   def calculate_total
-    extra_minutes = @total_seconds / 60
-    seconds = @total_seconds % 59
+    extra_minutes, @seconds = @total_seconds.divmod(60)
     @total_minutes += extra_minutes
-    extra_hours = @total_minutes / 60
-    minutes = @total_minutes % 60
+    extra_hours, @minutes = @total_minutes.divmod(60)
     @total_hours += extra_hours
-    hours = @total_hours % 24
-    days = @total_hours / 24
-    "The total time is #{ days } days and #{ hours }:#{ minutes }:#{ seconds }"
+    @days, @hours = @total_hours.divmod(24)
+  end
+
+  def to_s
+    "The total time is #{ @days } day and #{ @hours }:#{ @minutes }:#{ @seconds }"
   end
 
 end

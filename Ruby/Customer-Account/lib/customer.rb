@@ -13,25 +13,23 @@ class Customer
 
   # minimum deposit amount is Rs100/- and always in round-off figure
   def deposit(amount)
-    begin
-      if(amount.to_i < 100)
-        raise AmountError, 'Insufficient Amount'
-      else
-        @balance += amount.to_i
-      end
+    if(amount.to_i < 100)
+      raise AmountError, 'Insufficient Amount'
+    else
+      @balance += amount.to_i
     end
   end
 
   # withdraw amount always in round-off figure
   def withdraw(amount)
     if amount.to_i > @balance
-      raise AmountError, 'Insufficient Amount'
+      raise AmountError, 'Insufficient Balance'
     else
       @balance -= amount.to_i
     end
   end
-  
+
   def check_balance
-    "Remaining Balance is Rs#{ @balance }/-"
+    "Remaining Balance is Rs#{ balance }/-"
   end
 end

@@ -7,19 +7,16 @@ class Invoice
     @products = products_array
   end
 
-  def calculate_total
-    @total_price  = products.inject(0) { |sum, product| sum += product.total_price }
+  def calculate_total_price
+    @total_price = products.inject(0) { |sum, product| sum += product.total_price }
   end
 
   def generate_invoice
-    data = Array.new
-    products.each do |item_row| 
-      item_row
-    end
+    products.each { |item_row| item_row }
   end
 
   def to_s
-    "Grand Total : #{ calculate_total }"
+    "Grand Total : #{ calculate_total_price }"
   end
 
 end

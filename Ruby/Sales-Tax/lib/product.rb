@@ -10,19 +10,24 @@ class Product
     @sales_tax = sales_tax
     @import_duty = import_duty
     @price = price.round
-    @total_tax = calculate_tax.round
-    @total_price =  price_including_tax.round
+    @total_tax = calculate_total_tax
+    @total_price = price_including_tax.round
   end
 
   def price_including_tax
     total_price = price + total_tax
   end
 
-  def calculate_tax
-    sales_tax_price, import_duty_price = 0, 0
-    sales_tax_price = (price * SALES_TAX).round if(sales_tax =~ REGEX_FOR_NO)
-    import_duty_price = (price * IMPORT_DUTY).round if(import_duty =~ REGEX_FOR_YES)
-    total_tax = sales_tax_price + import_duty_price
+  def calculate_sales_tax
+    (price * SALES_TAX).round if sales_tax =~ REGEX_FOR_NO
+  end
+
+  def calculate_import_duty
+    (price * IMPORT_DUTY).round if import_duty =~ REGEX_FOR_YES
+  end
+
+  def calculate_total_tax
+    calculate_sales_tax.to_i + calculate_import_duty.to_i
   end
 
   def to_s

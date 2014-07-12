@@ -7,10 +7,10 @@ begin
   print 'Name of the product : '
   product_name = gets.chomp
 
-  print 'import_duty?(yes/no): '
+  print 'import_duty(yes/no)? : '
   import_duty = gets.chomp
 
-  print 'Exempted from tax?(yes/no) : '
+  print 'Exempted from tax(yes/no)? : '
   sales_tax = gets.chomp
 
   print 'Price: '

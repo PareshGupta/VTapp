@@ -8,4 +8,4 @@ puts time_array
   time_array.push(gets.chomp)
 end
 
-puts time.parse_and_push_to_array(time_array)
+puts time.parse(time_array)

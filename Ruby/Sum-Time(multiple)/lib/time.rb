@@ -3,22 +3,21 @@ require 'date'
 class Time
   CHECK_TIME_REGEX = /(^([0-1]?\d|2[0-3]?)\:([0-5]?\d)\:([0-5]?\d)$)/
 
-  def validate(time)
+  def validate?(time)
     CHECK_TIME_REGEX === time
   end
 
-  def parse_and_push_to_array(time_array)
+  def parse(time_array)
     @total_seconds, @total_minutes, @total_hours = 0, 0, 0
-    time_array.each do |time|
-      if validate(time)
+    time_array.all? do |time|
+      if validate?(time)
         time = DateTime.parse(time)
         sum_total_each_unit(time)
       else
         'Invalid Time'
-        false
       end
+      puts calculate_total
     end
-    # calculate_total
   end
 
   def sum_total_each_unit(time)

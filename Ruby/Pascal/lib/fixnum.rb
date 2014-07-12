@@ -2,9 +2,7 @@ class Fixnum
 
   def factorial
     factorial_number = 1
-    for i in (1..self)
-      factorial_number *= i
-    end
+    1.upto(self) { |i| factorial_number *= i }
     factorial_number
   end
 

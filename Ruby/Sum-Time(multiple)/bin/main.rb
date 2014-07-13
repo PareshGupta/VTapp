@@ -1,11 +1,3 @@
 require_relative '../lib/time.rb'
 
-time = Time.new
-time_array = Array.new
-puts time_array
-0.upto(2) do |i|
-  puts 'Enter the time'
-  time_array.push(gets.chomp)
-end
-
-puts time.parse(time_array)
+puts Time.new.sum('10:23:32', '14:34:50', '23:54:23')

@@ -1,3 +1,0 @@
-class NameError < StandardError
-
-end

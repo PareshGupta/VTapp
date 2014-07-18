@@ -3,7 +3,7 @@ require_relative '../lib/product.rb'
 class Invoice
   attr_accessor :products, :total_price
 
-  def initialize (products_array)
+  def initialize(products_array)
     @products = products_array
   end
 
@@ -16,7 +16,7 @@ class Invoice
   end
 
   def to_s
-    "Grand Total : #{ calculate_total_price }"
+    "Grand Total : Rs#{ calculate_total_price }/-"
   end
 
 end

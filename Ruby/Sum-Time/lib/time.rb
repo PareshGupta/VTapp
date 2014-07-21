@@ -1,4 +1,5 @@
 require 'date'
+require_relative '../lib/time_error.rb'
 
 class Time
   CHECK_TIME_REGEX = /(^([0-1]?\d|2[0-3]?)\:([0-5]?\d)\:([0-5]?\d)$)/
@@ -14,6 +15,8 @@ class Time
       @@total_hours = time1.hour + time2.hour
       @@total_minutes = time1.minute + time2.minute
       @@total_seconds = time1.second + time2.second
+    else
+      raise TimeError, 'Invalid Time'
     end
   end
 

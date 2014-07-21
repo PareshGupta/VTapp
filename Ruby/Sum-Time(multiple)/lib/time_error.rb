@@ -1,0 +1,3 @@
+class TimeError < Exception
+
+end

@@ -4,8 +4,9 @@ require_relative '../lib/time_error.rb'
 class Time
   CHECK_TIME_REGEX = /(^([0-1]?\d|2[0-3]?)\:([0-5]?\d)\:([0-5]?\d)$)/
 
-  def self.sum(*time)
-    parse(time)
+  def self.sum(*times)
+    times = times.collect { |time| parse(time) }
+    calculate_total_units(times)
     extra_minutes, @@seconds = @@total_seconds.divmod(60)
     @@total_minutes += extra_minutes
     extra_hours, @@minutes = @@total_minutes.divmod(60)
@@ -19,21 +20,20 @@ class Time
   end
 
   def self.parse(time)
-    @@total_hours, @@total_minutes, @@total_seconds = 0, 0, 0
-    time.each do |time|
-      if valid?(time)
-        time = DateTime.parse(time)
-        calculate_total_units(time)
-      else
-        raise TimeError, 'Invalid Time'
-      end
+    if valid?(time)
+      DateTime.parse(time)
+    else
+      raise TimeError, 'Invalid Time'
     end
   end
 
-  def self.calculate_total_units(time)
-    @@total_hours += time.hour
-    @@total_minutes += time.minute
-    @@total_seconds += time.second
+  def self.calculate_total_units(times)
+    @@total_hours, @@total_minutes, @@total_seconds = 0, 0, 0
+    times.each do |time|
+      @@total_hours += time.hour
+      @@total_minutes += time.minute
+      @@total_seconds += time.second
+    end
   end
 
   def self.display

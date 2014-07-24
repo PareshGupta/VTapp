@@ -1,11 +1,11 @@
-require_relative '../lib/fixnum.rb'
-
 class PascalTriangle
 
   def generate(limit)
-    0.upto(limit) do |number|
-      0.upto(number) do |value|
-        print number.factorial / (value.factorial * (number - value).factorial), ' '
+    0.upto(limit) do |num|
+      number = 1
+      0.upto(num) do |value|
+        print number, ' '
+        number = number * (num - value) / (value + 1)
       end
       yield
     end

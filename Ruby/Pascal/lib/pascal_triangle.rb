@@ -1,7 +1,7 @@
 class PascalTriangle
 
-  def generate(limit)
-    0.upto(limit) do |num|
+  def generate(rows)
+    0.upto(rows) do |num|
       number = 1
       0.upto(num) do |value|
         print number, ' '

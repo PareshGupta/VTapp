@@ -12,7 +12,7 @@ class Invoice
   end
 
   def calculate_total_price
-    products.inject(0) { |sum, product| sum += product.total_price }
+    products.inject(0) { |sum, product| sum += product.net_price }
   end
 
   def generate

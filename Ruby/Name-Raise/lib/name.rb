@@ -1,11 +1,11 @@
 require_relative '../lib/invalid_name_error.rb'
 
 class Name
-  CHECK_LOWERCASE_ALPHABETS_OR_DIGITS_REGEX = /[a-z]|[\d]/
+  CHECK_UPPERCASE_ALPHABETS = /[A-Z]/
 
   def initialize(firstname, lastname)
-    @firstname = validate_length?(firstname) ? check_first_letter_capital!(firstname) : (raise InvalidNameError, 'First name is blank')
-    @lastname = validate_length?(lastname) ? lastname : (raise InvalidNameError, 'Last name is blank')
+    @firstname = blank_name?(firstname) ? check_first_letter_capital!(firstname) : (raise InvalidNameError, 'First name is blank')
+    @lastname = blank_name?(lastname) ? lastname : (raise InvalidNameError, 'Last name is blank')
   end
 
   def to_s
@@ -13,19 +13,15 @@ class Name
   end
 
   private
-    def validate_length?(name)
-      if name.nil? || name.empty?
-        false
-      else
-        true
-      end
+    def blank_name?(name)
+      !(name.nil? || name.empty?)
     end
 
     def check_first_letter_capital!(name)
-      if name[0].match(CHECK_LOWERCASE_ALPHABETS_OR_DIGITS_REGEX)
-        raise InvalidNameError, "First letter of the '#{ name }' is not capital"
-      else
+      if name[0].match(CHECK_UPPERCASE_ALPHABETS)
         name
+      else
+        raise InvalidNameError, "First letter of the '#{ name }' is not capital"
       end
     end
 end
